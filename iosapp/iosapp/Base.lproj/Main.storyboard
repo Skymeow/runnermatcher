@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ZFr-bR-zgD">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Swipe-->
+        <scene sceneID="eo5-2y-j6g">
+            <objects>
+                <viewController title="Swipe" id="ZFr-bR-zgD" customClass="ViewController" customModule="iosapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aKp-BJ-Fgy"/>
+                        <viewControllerLayoutGuide type="bottom" id="rUi-IY-KT9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mp9-HU-aCQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zIq-tI-FNq">
+                                <rect key="frame" x="16" y="93" width="343" height="483"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="cgs-lw-Ndw"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.41568627450000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="zIq-tI-FNq" firstAttribute="leading" secondItem="mp9-HU-aCQ" secondAttribute="leading" constant="16" id="3yN-Tp-0Ny"/>
+                            <constraint firstAttribute="bottom" secondItem="zIq-tI-FNq" secondAttribute="bottom" constant="91" id="6DF-Rp-8rN"/>
+                            <constraint firstAttribute="trailing" secondItem="zIq-tI-FNq" secondAttribute="trailing" constant="16" id="FV9-x9-IOz"/>
+                            <constraint firstItem="zIq-tI-FNq" firstAttribute="top" secondItem="aKp-BJ-Fgy" secondAttribute="bottom" constant="73" id="Oza-Lg-Ut8"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7cA-Ya-9dC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-186.40000000000001" y="74.212893553223395"/>
+        </scene>
+    </scenes>
+</document>

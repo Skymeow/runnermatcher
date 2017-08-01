@@ -15,6 +15,7 @@ target 'iosapp' do
   pod 'FacebookLogin'
   pod 'FirebaseUI/Facebook'
   pod 'GeoFire', :git => 'https://github.com/firebase/geofire-objc.git'
+  pod 'Cloudinary', '~2.0'
   # pod 'GeoFire', '~> 1.1'
   # Pods for iosapp
 

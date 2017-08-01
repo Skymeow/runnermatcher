@@ -16,6 +16,9 @@
 		F9287A031F2BA969005FDBCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9287A051F2BA969005FDBCC /* Main.storyboard */; };
 		F9287A081F2BAB73005FDBCC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9287A071F2BAB73005FDBCC /* Login.storyboard */; };
 		F9287A0B1F2BDF7C005FDBCC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9287A0A1F2BDF7C005FDBCC /* CoreLocation.framework */; };
+		F945A6481F30FA0F00D8112E /* MGPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F945A6471F30FA0F00D8112E /* MGPhotoHelper.swift */; };
+		F945A64B1F30FAD600D8112E /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F945A64A1F30FAD600D8112E /* StorageService.swift */; };
+		F945A64D1F30FC3000D8112E /* StorageReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = F945A64C1F30FC3000D8112E /* StorageReference.swift */; };
 		F9873D441F2645300087935E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9873D431F2645300087935E /* AppDelegate.swift */; };
 		F9873D461F2645300087935E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9873D451F2645300087935E /* ViewController.swift */; };
 		F9873D4B1F2645300087935E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9873D4A1F2645300087935E /* Assets.xcassets */; };
@@ -36,6 +39,9 @@
 		F9287A041F2BA969005FDBCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F9287A071F2BAB73005FDBCC /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		F9287A0A1F2BDF7C005FDBCC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F945A6471F30FA0F00D8112E /* MGPhotoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPhotoHelper.swift; sourceTree = "<group>"; };
+		F945A64A1F30FAD600D8112E /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		F945A64C1F30FC3000D8112E /* StorageReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageReference.swift; sourceTree = "<group>"; };
 		F9873D401F2645300087935E /* iosapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9873D431F2645300087935E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9873D451F2645300087935E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +86,7 @@
 		F92879FC1F2B868B005FDBCC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F945A64C1F30FC3000D8112E /* StorageReference.swift */,
 				F92879FA1F2B8685005FDBCC /* Storyboard+Utility.swift */,
 			);
 			name = Extensions;
@@ -91,6 +98,14 @@
 				F92879FD1F2B8B65005FDBCC /* Constants.swift */,
 			);
 			name = "Supporting FIles";
+			sourceTree = "<group>";
+		};
+		F945A6491F30FA6200D8112E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F945A6471F30FA0F00D8112E /* MGPhotoHelper.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		F9873D371F2645300087935E = {
@@ -124,6 +139,7 @@
 				F9873D4A1F2645300087935E /* Assets.xcassets */,
 				F92879FC1F2B868B005FDBCC /* Extensions */,
 				F92879FF1F2B8B78005FDBCC /* Supporting FIles */,
+				F945A6491F30FA6200D8112E /* Helpers */,
 			);
 			path = iosapp;
 			sourceTree = "<group>";
@@ -160,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				F9873D5B1F2646CB0087935E /* UserService.swift */,
+				F945A64A1F30FAD600D8112E /* StorageService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -291,9 +308,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9287A011F2B963B005FDBCC /* CreateUsernameViewController.swift in Sources */,
+				F945A6481F30FA0F00D8112E /* MGPhotoHelper.swift in Sources */,
 				F9873D5C1F2646CB0087935E /* UserService.swift in Sources */,
 				F9873D461F2645300087935E /* ViewController.swift in Sources */,
 				F9873D441F2645300087935E /* AppDelegate.swift in Sources */,
+				F945A64B1F30FAD600D8112E /* StorageService.swift in Sources */,
+				F945A64D1F30FC3000D8112E /* StorageReference.swift in Sources */,
 				F92879FE1F2B8B65005FDBCC /* Constants.swift in Sources */,
 				F92879FB1F2B8685005FDBCC /* Storyboard+Utility.swift in Sources */,
 				F92879F91F2B837D005FDBCC /* LoginViewController.swift in Sources */,

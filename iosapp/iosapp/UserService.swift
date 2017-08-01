@@ -9,12 +9,26 @@
 import Foundation
 import FirebaseAuth.FIRUser
 import FirebaseDatabase
+import UIKit
+import FirebaseStorage
 
 struct UserService {
-    static func create(_ firUser: FIRUser, dictValue: [String : Any] , completion: @escaping (User?) -> Void) {
-        let userAttrs = User.dictionaryWithValues(forKeys: ["User.uid"])
+    static func create(for image: UIImage) {
+        let imageRef = Storage.storage().reference().child("test_image.jpg")
+        StorageService.uploadImage(image, at: imageRef) { (downloadURL) in
+            guard let downloadURL = downloadURL else {
+                return
+            }
+            
+            let urlString = downloadURL.absoluteString
+            print("image url: \(urlString)")
+        }
+    }
+    
+    
+    static func createProfile(_ firUser: FIRUser, dictValue: [String : Any] , completion: @escaping (User?) -> Void) {
         let ref = Database.database().reference().child("users").child(firUser.uid)
-        ref.setValue(userAttrs) { (error, ref) in
+        ref.setValue(dictValue) { (error, ref) in
             if let error = error {
                 assertionFailure(error.localizedDescription)
                 return completion(nil)

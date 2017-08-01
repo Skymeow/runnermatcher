@@ -27,6 +27,18 @@
                                     <constraint firstAttribute="width" constant="343" id="cgs-lw-Ndw"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d40-9f-mda">
+                                <rect key="frame" x="164" y="175" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Geo"/>
+                                <connections>
+                                    <action selector="getGeoButtontapped:" destination="ZFr-bR-zgD" eventType="touchUpInside" id="aAh-kN-f2b"/>
+                                </connections>
+                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dtx-qz-4v4">
+                                <rect key="frame" x="55" y="391" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.41568627450000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -36,6 +48,10 @@
                             <constraint firstItem="zIq-tI-FNq" firstAttribute="top" secondItem="aKp-BJ-Fgy" secondAttribute="bottom" constant="73" id="Oza-Lg-Ut8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="getGeoButton" destination="d40-9f-mda" id="VTv-cM-CBn"/>
+                        <outlet property="map" destination="dtx-qz-4v4" id="2Lh-nr-cwk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7cA-Ya-9dC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

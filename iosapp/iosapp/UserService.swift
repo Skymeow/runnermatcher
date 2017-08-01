@@ -11,11 +11,9 @@ import FirebaseAuth.FIRUser
 import FirebaseDatabase
 
 struct UserService {
-    static func create(_ firUser: FIRUser, username: String, completion: @escaping (User?) -> Void) {
-        let userAttrs = ["username": username]
-          let ref = Database.database().reference().child("users").child(firUser.uid)
-        //let ref = DatabaseReference.toLocation(.showUser(uid: firUser.uid))
-        
+    static func create(_ firUser: FIRUser, dictValue: [String : Any] , completion: @escaping (User?) -> Void) {
+        let userAttrs = User.dictionaryWithValues(forKeys: ["User.uid"])
+        let ref = Database.database().reference().child("users").child(firUser.uid)
         ref.setValue(userAttrs) { (error, ref) in
             if let error = error {
                 assertionFailure(error.localizedDescription)

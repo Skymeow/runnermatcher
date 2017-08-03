@@ -15,6 +15,7 @@ struct Constants {
     struct UserDefaults {
         static let currentUser = "currentUser"
         static let uid = "uid"
+//        static let email = "email"
         static let username = "username"
         static let age = "age"
         static let miles = "miles"

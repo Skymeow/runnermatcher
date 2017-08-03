@@ -9,12 +9,28 @@
 import UIKit
 import Firebase
 import FirebaseAuthUI
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+//    func application(application: UIApplication,
+//                     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+//        return FBSDKApplicationDelegate.sharedInstance()
+//            .application(application, didFinishLaunchingWithOptions: launchOptions)
+//    }
+//    func applicationDidBecomeActive(application: UIApplication) {
+//        FBSDKAppEvents.activateApp()
+//    }
+//    func application(application: UIApplication, openURL url: NSURL,
+//                     sourceApplication: String?, annotation: AnyObject?) -> Bool {
+//        return FBSDKApplicationDelegate.sharedInstance()
+//            .application(application, open: url as URL!,
+//                         sourceApplication: sourceApplication, annotation: annotation)
+//    }
+//
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()

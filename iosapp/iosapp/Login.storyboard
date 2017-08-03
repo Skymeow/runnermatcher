@@ -21,26 +21,10 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHJ-if-sLh">
-                                <rect key="frame" x="64" y="418" width="247" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Login with Facebook"/>
-                                <connections>
-                                    <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="etF-fm-jEN"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="DHJ-if-sLh" secondAttribute="trailing" constant="64" id="POP-0L-LJQ"/>
-                            <constraint firstAttribute="bottom" secondItem="DHJ-if-sLh" secondAttribute="bottom" constant="210" id="QaI-si-diu"/>
-                            <constraint firstItem="DHJ-if-sLh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="64" id="j0h-05-4qK"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MM4-fv-VLr"/>
                     <connections>
-                        <outlet property="loginButton" destination="DHJ-if-sLh" id="vL5-Ug-DUv"/>
                         <segue destination="KLQ-lh-kbs" kind="show" identifier="toCreateUsername" id="EFL-PX-nLa"/>
                     </connections>
                 </viewController>

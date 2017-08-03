@@ -16,6 +16,7 @@ class User: NSObject {
     //var isFollowed = false
     let uid: String
     let username: String
+//    let email: String
     let miles: Double
     let age: Int
     let imageURL: String
@@ -23,6 +24,7 @@ class User: NSObject {
     var dictValue: [String : Any] {
         get{
         return ["username" : username,
+//                "email" : email,
                 "miles" : miles,
             "age" : age,
             "imageURL" : imageURL,
@@ -34,6 +36,7 @@ class User: NSObject {
     init(uid: String, username: String, age: Int, miles: Double, imageURL: String, imageHeight: CGFloat) {
         self.uid = uid
         self.username = username
+//        self.email = email
         self.age = age
         self.miles = miles
         self.imageURL = imageURL
@@ -60,6 +63,7 @@ class User: NSObject {
     required init?(coder aDecoder: NSCoder) {
         guard let uid = aDecoder.decodeObject(forKey: Constants.UserDefaults.uid) as? String,
             let username = aDecoder.decodeObject(forKey: Constants.UserDefaults.username) as? String,
+//            let email = aDecoder.decodeObject(forKey: Constants.UserDefaults.email) as? String,
             let miles = aDecoder.decodeObject(forKey: Constants.UserDefaults.miles) as? Double,
             let age = aDecoder.decodeObject(forKey: Constants.UserDefaults.age) as? Int,
             let imageURL = aDecoder.decodeObject(forKey: Constants.UserDefaults.imageURL) as? String,
@@ -67,6 +71,7 @@ class User: NSObject {
         
             else { return nil }
         self.uid = uid
+//        self.email = email
         self.username = username
         self.miles = miles
         self.age = age
@@ -102,6 +107,7 @@ class User: NSObject {
 extension User: NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(uid, forKey: Constants.UserDefaults.uid)
+//        aCoder.encode(email, forKey: Constants.UserDefaults.email)
         aCoder.encode(username, forKey: Constants.UserDefaults.username)
         aCoder.encode(age, forKey: Constants.UserDefaults.age)
         aCoder.encode(miles, forKey: Constants.UserDefaults.miles)

@@ -8,7 +8,6 @@
 
 import UIKit
 import Foundation
-import UIKit
 import FirebaseAuth
 import FirebaseAuthUI
 import FirebaseDatabase

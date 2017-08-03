@@ -15,7 +15,8 @@ import BrightFutures
 import FirebaseDatabase
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
-    
+//    temporary as bar image , change into user img after
+    @IBOutlet weak var barImage: UIImageView!
     @IBOutlet weak var map: MKMapView!
 //    get random bar within 1 mile of current location:userCoordinate
     var userCoordinate : YLPCoordinate?
@@ -32,8 +33,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location!.coordinate.latitude, location!.coordinate.longitude)
         let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
         map.setRegion(region, animated: true)
-        print(long)
-        userCoordinate = YLPCoordinate(latitude: lat, longitude: long)
+//        userCoordinate = YLPCoordinate(latitude: newLat, longitude: newLong)
+        let currentUser = User.current
+        let dataLocation = Location(lat: lat, long: long)
+        let dict = dataLocation.dictValue
+        let locationRef = Database.database().reference().child("location").child(currentUser.uid).childByAutoId()
+        locationRef.updateChildValues(dict)
+        
         self.map.showsUserLocation = true
     }
     
@@ -48,7 +54,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             client.search(withQuery: query)
             }.onSuccess { search in
                 if let topBusiness = search.businesses.first {
-                    print("Top business: \(topBusiness.name), id: \(topBusiness.identifier)")
+                    print("Top business: \(topBusiness.name)+\(topBusiness.categories.description.description)")
+                    print(topBusiness.location.address)
+//                    print(topBusiness.categories)
                 } else {
                     print("No businesses found")
                 }

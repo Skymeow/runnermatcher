@@ -19,6 +19,11 @@
 		F945A6481F30FA0F00D8112E /* MGPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F945A6471F30FA0F00D8112E /* MGPhotoHelper.swift */; };
 		F945A64B1F30FAD600D8112E /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F945A64A1F30FAD600D8112E /* StorageService.swift */; };
 		F945A64D1F30FC3000D8112E /* StorageReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = F945A64C1F30FC3000D8112E /* StorageReference.swift */; };
+		F945A64F1F32127300D8112E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F945A64E1F32127300D8112E /* ProfileViewController.swift */; };
+		F945A6511F32199400D8112E /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F945A6501F32199400D8112E /* LocationService.swift */; };
+		F945A6531F3219A600D8112E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F945A6521F3219A600D8112E /* Location.swift */; };
+		F945A6551F32261600D8112E /* YelpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F945A6541F32261600D8112E /* YelpService.swift */; };
+		F945A6571F32615D00D8112E /* YLPClient+Futures.swift in Sources */ = {isa = PBXBuildFile; fileRef = F945A6561F32615D00D8112E /* YLPClient+Futures.swift */; };
 		F9873D441F2645300087935E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9873D431F2645300087935E /* AppDelegate.swift */; };
 		F9873D461F2645300087935E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9873D451F2645300087935E /* ViewController.swift */; };
 		F9873D4B1F2645300087935E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9873D4A1F2645300087935E /* Assets.xcassets */; };
@@ -42,6 +47,11 @@
 		F945A6471F30FA0F00D8112E /* MGPhotoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPhotoHelper.swift; sourceTree = "<group>"; };
 		F945A64A1F30FAD600D8112E /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		F945A64C1F30FC3000D8112E /* StorageReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageReference.swift; sourceTree = "<group>"; };
+		F945A64E1F32127300D8112E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		F945A6501F32199400D8112E /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		F945A6521F3219A600D8112E /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		F945A6541F32261600D8112E /* YelpService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpService.swift; sourceTree = "<group>"; };
+		F945A6561F32615D00D8112E /* YLPClient+Futures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "YLPClient+Futures.swift"; sourceTree = "<group>"; };
 		F9873D401F2645300087935E /* iosapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9873D431F2645300087935E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9873D451F2645300087935E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				F945A6471F30FA0F00D8112E /* MGPhotoHelper.swift */,
+				F945A6561F32615D00D8112E /* YLPClient+Futures.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -160,6 +171,7 @@
 				F9873D451F2645300087935E /* ViewController.swift */,
 				F92879F81F2B837D005FDBCC /* LoginViewController.swift */,
 				F9287A001F2B963B005FDBCC /* CreateUsernameViewController.swift */,
+				F945A64E1F32127300D8112E /* ProfileViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -168,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				F9873D581F26469D0087935E /* User.swift */,
+				F945A6521F3219A600D8112E /* Location.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -177,6 +190,8 @@
 			children = (
 				F9873D5B1F2646CB0087935E /* UserService.swift */,
 				F945A64A1F30FAD600D8112E /* StorageService.swift */,
+				F945A6501F32199400D8112E /* LocationService.swift */,
+				F945A6541F32261600D8112E /* YelpService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -313,11 +328,16 @@
 				F9873D461F2645300087935E /* ViewController.swift in Sources */,
 				F9873D441F2645300087935E /* AppDelegate.swift in Sources */,
 				F945A64B1F30FAD600D8112E /* StorageService.swift in Sources */,
+				F945A6531F3219A600D8112E /* Location.swift in Sources */,
+				F945A64F1F32127300D8112E /* ProfileViewController.swift in Sources */,
 				F945A64D1F30FC3000D8112E /* StorageReference.swift in Sources */,
 				F92879FE1F2B8B65005FDBCC /* Constants.swift in Sources */,
+				F945A6511F32199400D8112E /* LocationService.swift in Sources */,
 				F92879FB1F2B8685005FDBCC /* Storyboard+Utility.swift in Sources */,
 				F92879F91F2B837D005FDBCC /* LoginViewController.swift in Sources */,
 				F9873D591F26469D0087935E /* User.swift in Sources */,
+				F945A6551F32261600D8112E /* YelpService.swift in Sources */,
+				F945A6571F32615D00D8112E /* YLPClient+Futures.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

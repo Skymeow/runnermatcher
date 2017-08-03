@@ -21,24 +21,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zIq-tI-FNq">
-                                <rect key="frame" x="16" y="93" width="343" height="483"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="runnerImage" translatesAutoresizingMaskIntoConstraints="NO" id="zIq-tI-FNq" customClass="runnerImage">
+                                <rect key="frame" x="16" y="58" width="343" height="232"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="cgs-lw-Ndw"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d40-9f-mda">
-                                <rect key="frame" x="164" y="175" width="46" height="30"/>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BAX-5Q-Hs5">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="RunnerFun" id="8Rc-uH-nDE">
+                                        <barButtonItem key="leftBarButtonItem" title="Profile" id="eFW-JB-TA5">
+                                            <connections>
+                                                <segue destination="NIu-Rz-qfG" kind="show" identifier="toProfile" id="TTJ-He-ppa"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="JjE-Yr-dke"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Jc-Av-KsR">
+                                <rect key="frame" x="16" y="585" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Geo"/>
-                                <connections>
-                                    <action selector="getGeoButtontapped:" destination="ZFr-bR-zgD" eventType="touchUpInside" id="aAh-kN-f2b"/>
-                                </connections>
+                                <state key="normal" title="dislike"/>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dtx-qz-4v4">
-                                <rect key="frame" x="55" y="391" width="240" height="128"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yX0-l6-anO">
+                                <rect key="frame" x="313" y="585" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="like"/>
+                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="stU-8d-7GA">
+                                <rect key="frame" x="67" y="365" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXf-hJ-Lk6">
+                                <rect key="frame" x="153" y="532" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Bar"/>
+                                <connections>
+                                    <action selector="BarButtonTapped:" destination="ZFr-bR-zgD" eventType="touchUpInside" id="Cup-te-ZS9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.41568627450000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -49,13 +73,58 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="getGeoButton" destination="d40-9f-mda" id="VTv-cM-CBn"/>
-                        <outlet property="map" destination="dtx-qz-4v4" id="2Lh-nr-cwk"/>
+                        <outlet property="map" destination="stU-8d-7GA" id="DG3-Pp-msM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7cA-Ya-9dC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-186.40000000000001" y="74.212893553223395"/>
         </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="fhO-jE-vE7">
+            <objects>
+                <viewController id="NIu-Rz-qfG" customClass="ProfileViewController" customModule="iosapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Crs-1s-C76"/>
+                        <viewControllerLayoutGuide type="bottom" id="r2n-bZ-mzY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lEG-oO-Qom">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ugf-dW-3YK">
+                                <rect key="frame" x="67" y="130" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XCs-CR-vkc">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="Vo7-EQ-NAx">
+                                        <barButtonItem key="leftBarButtonItem" title="swipe" id="fPy-2a-pvR">
+                                            <connections>
+                                                <segue destination="ZFr-bR-zgD" kind="show" identifier="backToSwipe" id="dGj-0b-PaC"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="rBd-dx-bQB"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MR5-fq-0SV">
+                                <rect key="frame" x="130" y="496" width="124" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xsi-hn-Ovs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="528.79999999999995" y="73.313343328335833"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="runnerImage" width="16" height="16"/>
+    </resources>
 </document>

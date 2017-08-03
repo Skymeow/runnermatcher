@@ -9,29 +9,59 @@
 import UIKit
 import CoreLocation
 import MapKit
+import YelpAPI
+import BrightFutures
 //import GeoFire
 import FirebaseDatabase
 
-class ViewController: UIViewController ,CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var map: MKMapView!
+//    get random bar within 1 mile of current location:userCoordinate
+    var userCoordinate : YLPCoordinate?
+    let appId = "0NsM7ain72A2QREFFs9OjA"
+    let appSecret = "F3JrqW9WU4ARGrJtzWg5FoMGdqRqIPEiq1L4MSznAsklpn2YCxDMFp1b47eVMq6E"
     
     let manager = CLLocationManager()
-    
-    func locationManager(_ manage: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations[0]
+    func locationManager(_ manage: CLLocationManager,didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last
+        let long = Double((location?.coordinate.longitude)!)
+        let lat = Double((location?.coordinate.latitude)!)
         //map zoomed in aspect
         let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+        let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location!.coordinate.latitude, location!.coordinate.longitude)
         let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
         map.setRegion(region, animated: true)
-        print(location.altitude)
-        print(location.speed)
-
-        
+        print(long)
+        userCoordinate = YLPCoordinate(latitude: lat, longitude: long)
         self.map.showsUserLocation = true
-        
     }
+    
+    
+    
+    @IBAction func BarButtonTapped(_ sender: UIButton) {
+        let query = YLPQuery(coordinate: userCoordinate!)
+        query.term = "bar"
+        query.limit = 3
+        
+        YLPClient.authorize(withAppId: appId, secret: appSecret).flatMap { client in
+            client.search(withQuery: query)
+            }.onSuccess { search in
+                if let topBusiness = search.businesses.first {
+                    print("Top business: \(topBusiness.name), id: \(topBusiness.identifier)")
+                } else {
+                    print("No businesses found")
+                }
+        
+            }.onFailure { error in
+                print("Search errored: \(error)")
+                exit(EXIT_FAILURE)
+        }
+
+    }
+    
+    
+    
     @IBAction func getGeoButtontapped(_ sender: UIButton) {
 //        let geofireRef = Database.database().reference()
 //        let geoFire = GeoFire(firebaseRef: geofireRef)
@@ -44,20 +74,21 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
 //                print("GeoFire does not contain a location for \"firebase-hq\"")
 //            }
 //        })
-
+//
     }
-    @IBOutlet weak var getGeoButton: UIButton!
-    override func viewDidLoad() {
+       override func viewDidLoad() {
         super.viewDidLoad()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
+        manager.distanceFilter = 1;
         manager.startUpdatingLocation()
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
 
 

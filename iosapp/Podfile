@@ -4,8 +4,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 target 'iosapp' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  # pod 'Firebase', '~> 2.1'
+
+  pod 'Firebase'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'FirebaseUI/Auth'
@@ -14,9 +14,11 @@ target 'iosapp' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FirebaseUI/Facebook'
-  pod 'GeoFire', :git => 'https://github.com/firebase/geofire-objc.git'
-  pod 'Cloudinary', '~2.0'
-  # pod 'GeoFire', '~> 1.1'
-  # Pods for iosapp
-
+  pod 'Kingfisher', '~> 3.0'
+  pod 'Alamofire', '~> 4.4'
+  pod 'AlamofireImage', :git => 'https://github.com/Alamofire/AlamofireImage.git'
+  pod 'AlamofireNetworkActivityIndicator', :git => 'https://github.com/Alamofire/AlamofireNetworkActivityIndicator.git'
+  pod 'OAuthSwift', '~> 1.1.0'
+  pod 'YelpAPI', '~> 2.0'
+  pod 'BrightFutures', '~> 5.1'
 end

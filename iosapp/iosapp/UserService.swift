@@ -14,6 +14,8 @@ import FirebaseStorage
 
 struct UserService {
     static func create(for image: UIImage) {
+//        let imageRef = StorageReference.newProfileImageReference()
+//      let imageRef = Storage.storage().reference().child("users").child(firUser.uid)
         let imageRef = Storage.storage().reference().child("test_image.jpg")
         StorageService.uploadImage(image, at: imageRef) { (downloadURL) in
             guard let downloadURL = downloadURL else {

@@ -43,14 +43,13 @@ class CreateUsernameViewController: UIViewController, UIImagePickerControllerDel
         if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
             selectedImageFromPicker = originalImage
             profileImageView.image = selectedImageFromPicker
+//            UserService.create(for: profileImageView.image!)
         }
 //        if let selectedImage = profileImageView{
 //            profileImageView = selectedImage
 //        }
         dismiss(animated: true, completion: nil)
-//        func saveChanges(){
-//            
-//        }
+        
     }
     
         

@@ -29,4 +29,14 @@ struct StorageService {
         
     }
     
+    
+//    StorageReference.getData(maxSize: 1 * 1024 * 1024){
+//        data,error in
+//        if let error = error {
+//            print("shit")
+//        } else {
+//            downloadedImage = data
+//        }
+//    }
+    
 }

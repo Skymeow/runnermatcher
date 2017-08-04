@@ -11,7 +11,7 @@ import Foundation
 import FirebaseAuth
 import FirebaseAuthUI
 import FirebaseDatabase
-
+import FirebaseStorage
 
 class CreateUsernameViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -42,6 +42,7 @@ class CreateUsernameViewController: UIViewController, UIImagePickerControllerDel
         if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
             selectedImageFromPicker = originalImage
             profileImageView.image = selectedImageFromPicker
+            
 //            UserService.create(for: profileImageView.image!)
         }
 //        if let selectedImage = profileImageView{
@@ -54,17 +55,13 @@ class CreateUsernameViewController: UIViewController, UIImagePickerControllerDel
         
     @IBAction func nextButtonTapped(_ sender: UIButton) {
         let firUser = Auth.auth().currentUser
-
-       
-        if let username = usernameTextField.text {
+            if let username = usernameTextField.text {
             if let miles = Double(milesTextField.text!) {
                 if let age = Int(ageTextField.text!) {
-                   
-                    let currentUser = User(uid: (firUser?.uid)!, username: username, age: age, miles: miles, imageURL: "", imageHeight: 50) // temporary
-                    
+                    let currentUser = User(uid: (firUser?.uid)!, username: username, age: age, miles: miles, imageHeight: 50)
                     let dictValue = currentUser.dictValue
                     
-                    let ref = Database.database().reference().child("users").child((firUser?.uid)!)
+                    let ref = Database.database().reference().child("users").child((firUser!.uid))
                     ref.updateChildValues(dictValue) { (error, ref) in
                         if let error = error {
                             assertionFailure(error.localizedDescription)
@@ -78,9 +75,6 @@ class CreateUsernameViewController: UIViewController, UIImagePickerControllerDel
                         }
                     
                     UserService.create(for: self.profileImageView.image!)
-
-                    
-                    
                         let initialViewController = UIStoryboard.initialViewController(for: .main)
                         self.view.window?.rootViewController = initialViewController
                         self.view.window?.makeKeyAndVisible()

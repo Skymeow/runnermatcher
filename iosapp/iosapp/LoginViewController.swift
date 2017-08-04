@@ -47,13 +47,7 @@ class LoginViewController: UIViewController {
                     self.present(alertController, animated: true, completion: nil)
                     
                 }
-                
-//                if let user = user {
-//                    User.setCurrent(user, writeToUserDefaults: true)
-            
-                
 
-                //Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).setValue(["email":user?.email])
                 Database.database().reference().child("users").child((user?.uid)!).setValue(["email": user?.email])
                 // Present the create profile view
 //                let initialViewController = UIStoryboard.initialViewController(for: .login)

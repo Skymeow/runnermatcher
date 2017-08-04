@@ -14,16 +14,16 @@ import FirebaseStorage
 
 struct UserService {
     static func create(for image: UIImage) {
+        let ref = Database.database().reference().child("users").child("\(String(describing: Auth.auth().currentUser!.uid))")
         let imageRef = StorageReference.newProfileImageReference()
-//      let imageRef = Storage.storage().reference().child("users").child(firUser.uid)
-//        let imageRef = Storage.storage().reference().child("test_image.jpg")
         StorageService.uploadImage(image, at: imageRef) { (downloadURL) in
             guard let downloadURL = downloadURL else {
                 return
             }
             
             let urlString = downloadURL.absoluteString
-            print("image url: \(urlString)")
+            print("3333333333333333333333333image url: \(urlString)")
+            ref.updateChildValues(["imagURL":urlString])
         }
     }
     

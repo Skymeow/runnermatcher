@@ -87,6 +87,7 @@ DEPENDENCIES:
   - Alamofire (~> 4.4)
   - AlamofireImage (from `https://github.com/Alamofire/AlamofireImage.git`)
   - AlamofireNetworkActivityIndicator (from `https://github.com/Alamofire/AlamofireNetworkActivityIndicator.git`)
+  - Bolts
   - BrightFutures (~> 5.1)
   - FacebookCore
   - FacebookLogin
@@ -141,6 +142,6 @@ SPEC CHECKSUMS:
   Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
   YelpAPI: a0475cf4a7b6f9fe81f1bb7b8a8492770f21e3c7
 
-PODFILE CHECKSUM: a164e53f3f38d1bf36738ccd3ee5c3fe4259f5d1
+PODFILE CHECKSUM: 666b153763770c480cbd057104f09b277fd2e3ee
 
 COCOAPODS: 1.2.1

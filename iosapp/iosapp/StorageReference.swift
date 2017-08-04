@@ -9,13 +9,14 @@
 import Foundation
 import FirebaseStorage
 import UIKit
+import FirebaseAuth
 
 extension StorageReference {
     static let dateFormatter = ISO8601DateFormatter()
        static func newProfileImageReference() -> StorageReference {
-        let uid = User.current.uid
+        let uid = Auth.auth().currentUser?.uid
         let timestamp = dateFormatter.string(from: Date())
         
-        return Storage.storage().reference().child("images/users/\(uid)/\(timestamp).jpg")
+        return Storage.storage().reference().child("images/users/\(String(describing: uid))/\(timestamp).jpg")
     }
 }

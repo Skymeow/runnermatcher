@@ -14,9 +14,9 @@ import FirebaseStorage
 
 struct UserService {
     static func create(for image: UIImage) {
-//        let imageRef = StorageReference.newProfileImageReference()
+        let imageRef = StorageReference.newProfileImageReference()
 //      let imageRef = Storage.storage().reference().child("users").child(firUser.uid)
-        let imageRef = Storage.storage().reference().child("test_image.jpg")
+//        let imageRef = Storage.storage().reference().child("test_image.jpg")
         StorageService.uploadImage(image, at: imageRef) { (downloadURL) in
             guard let downloadURL = downloadURL else {
                 return
@@ -29,7 +29,7 @@ struct UserService {
     
     
     static func createProfile(_ firUser: FIRUser, dictValue: [String : Any] , completion: @escaping (User?) -> Void) {
-        let ref = Database.database().reference().child("users").child(firUser.uid)
+        let ref = Database.database().reference().child("users").child("\(String(describing: Auth.auth().currentUser?.uid))")
         ref.setValue(dictValue) { (error, ref) in
             if let error = error {
                 assertionFailure(error.localizedDescription)

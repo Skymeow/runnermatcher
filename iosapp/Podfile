@@ -11,6 +11,7 @@ target 'iosapp' do
   pod 'FirebaseUI/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'Bolts'
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FirebaseUI/Facebook'

@@ -24,7 +24,6 @@ class User: NSObject {
     var dictValue: [String : Any] {
         get{
         return ["username" : username,
-//                "email" : email,
                 "miles" : miles,
             "age" : age,
             "imageURL" : imageURL,
@@ -46,6 +45,7 @@ class User: NSObject {
     init?(snapshot: DataSnapshot) {
         guard let dict = snapshot.value as? [String : Any],
             let username = dict["username"] as? String,
+//            let email = dict["email"] as? String,
             let miles = dict["miles"] as? Double,
             let age = dict["age"] as? Int,
             let imageURL = dict["imageURL"] as? String,
@@ -53,6 +53,7 @@ class User: NSObject {
             else { return nil }
         self.uid = snapshot.key
         self.username = username
+//        self.email = email
         self.miles = miles
         self.age = age
         self.imageURL = imageURL
@@ -90,9 +91,9 @@ class User: NSObject {
         return currentUser
     }
     
-    static func setCurrent(_ user: User) {
-        _current = user
-    }
+//    static func setCurrent(_ user: User) {
+//        _current = user
+//    }
     
     class func setCurrent(_ user: User, writeToUserDefaults: Bool = false) {
         if writeToUserDefaults {

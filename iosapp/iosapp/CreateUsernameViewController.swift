@@ -53,9 +53,9 @@ class CreateUsernameViewController: UIViewController, UIImagePickerControllerDel
     
         
     @IBAction func nextButtonTapped(_ sender: UIButton) {
-       UserService.create(for: profileImageView.image!)
         let firUser = Auth.auth().currentUser
-        
+
+       
         if let username = usernameTextField.text {
             if let miles = Double(milesTextField.text!) {
                 if let age = Int(ageTextField.text!) {
@@ -64,34 +64,32 @@ class CreateUsernameViewController: UIViewController, UIImagePickerControllerDel
                     
                     let dictValue = currentUser.dictValue
                     
-                    UserService.createProfile(firUser!, dictValue: dictValue){ (user) in
-                        guard let user = user else {
-                            // handle error
-                            return
-                        }
-                        
-                        User.setCurrent(user, writeToUserDefaults: true)
-                        
-                        let initialViewController = UIStoryboard.initialViewController(for: .main)
-                        self.view.window?.rootViewController = initialViewController
-                        self.view.window?.makeKeyAndVisible()
-                    }
                     let ref = Database.database().reference().child("users").child((firUser?.uid)!)
-                    ref.setValue(dictValue) { (error, ref) in
+                    ref.updateChildValues(dictValue) { (error, ref) in
                         if let error = error {
                             assertionFailure(error.localizedDescription)
                             return
                         }
-                        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-                            _ = User(snapshot: snapshot)
-                        })
                     }
+                        UserService.show(forUID: (firUser?.uid)!) { (user) in
+                            if let user = user {
+                                User.setCurrent(user, writeToUserDefaults: true)
+                            }
+                        }
+                    
+                    UserService.create(for: self.profileImageView.image!)
+
+                    
+                    
+                        let initialViewController = UIStoryboard.initialViewController(for: .main)
+                        self.view.window?.rootViewController = initialViewController
+                        self.view.window?.makeKeyAndVisible()
+
                 }
             }
         }
-
-            
     }
+    
     
     
     

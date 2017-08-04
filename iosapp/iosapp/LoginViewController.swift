@@ -22,29 +22,58 @@ typealias FIRUser = FirebaseAuth.User
 
 class LoginViewController: UIViewController {
     
-    //    @IBOutlet weak var loginFirstButton: UIButton!
-    
-    //    @IBAction func loginButtonTapped(_ sender: UIButton) {
-    //        //         guard let authUI = FUIAuth.defaultAuthUI()
-    //            else {return}
-    //                authUI.delegate = self
-    //        // configure Auth UI for Facebook login
-    //        let providers: [FUIAuthProvider] = [FUIFacebookAuth()]
-    //        authUI.providers = providers
-    //
-    //        let authViewController = authUI.authViewController()
-    //        present(authViewController, animated: true)
-    
-    //    }
-    
+    @IBAction func facebookLogin(_ sender: UIButton) {
+        let fbLoginManager = FBSDKLoginManager()
+        fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
+            if let error = error {
+                print("Failed to login: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let accessToken = FBSDKAccessToken.current() else {
+                print("Failed to get access token")
+                return
+            }
+            
+            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+            
+            // Perform login by calling Firebase APIs
+            Auth.auth().signIn(with: credential, completion: { (user, error) in
+                if let error = error {
+                    print("Login error: \(error.localizedDescription)")
+                    let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+                    let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(okayAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    
+                }
+                
+//                if let user = user {
+//                    User.setCurrent(user, writeToUserDefaults: true)
+            
+                
+
+                //Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).setValue(["email":user?.email])
+                Database.database().reference().child("users").child((user?.uid)!).setValue(["email": user?.email])
+                // Present the create profile view
+//                let initialViewController = UIStoryboard.initialViewController(for: .login)
+//                UIApplication.shared.keyWindow?.rootViewController = initialViewController
+                self.performSegue(withIdentifier: Constants.Segue.toCreateUsername, sender: self)
+//                self.dismiss(animated: true, completion: nil)
+
+            
+            
+        })
+    }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let loginButton = FBSDKLoginButton()
-        loginButton.center = self.view.center
-        self.view.addSubview(loginButton)
-        loginButton.delegate = self
+//        let loginButton = FBSDKLoginButton()
+//        loginButton.center = self.view.center
+//        self.view.addSubview(loginButton)
+//        loginButton.delegate = self
         
     }
     
@@ -60,48 +89,5 @@ class LoginViewController: UIViewController {
 
 
 
-extension LoginViewController: FBSDKLoginButtonDelegate {
-    
-    
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        if let error = error {
-            print(error.localizedDescription)
-            return
-        }
-        
-        guard let accessToken = FBSDKAccessToken.current() else {
-            print("Access failed")
-            return
-        }
-        
-        
-        let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
-        
-        Auth.auth().signIn(with: credential) { (user, error) in
-            if let error = error {
-                assertionFailure("Error signing in: \(error.localizedDescription)")
-            } else {
-                guard let user = user
-                    else {  return  }
-                
-                UserService.show(forUID: user.uid) { (user) in
-                    if let user = user {
-                        // handle existing user
-                        User.setCurrent(user, writeToUserDefaults: true)
-                        
-                        let initialViewController = UIStoryboard.initialViewController(for: .main)
-                        self.view.window?.rootViewController = initialViewController
-                        self.view.window?.makeKeyAndVisible()
-                    } else {
-                        // handle new user
-                        self.performSegue(withIdentifier: Constants.Segue.toCreateUsername, sender: self)
-                    }
-                }
-            }
-        }
-    }
-    
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        print("did log out?")
-    }
-}
+
+

@@ -19,34 +19,47 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var barImage: UIImageView!
     @IBOutlet weak var map: MKMapView!
 //    get random bar within 1 mile of current location:userCoordinate
-    var userCoordinate : YLPCoordinate?
     let appId = "0NsM7ain72A2QREFFs9OjA"
     let appSecret = "F3JrqW9WU4ARGrJtzWg5FoMGdqRqIPEiq1L4MSznAsklpn2YCxDMFp1b47eVMq6E"
-    
     let manager = CLLocationManager()
+    var long: Double?
+    var lat: Double?
+    var userCoordinate : YLPCoordinate?
+
     func locationManager(_ manage: CLLocationManager,didUpdateLocations locations: [CLLocation]) {
+//        self.manager.startUpdatingLocation()
         let location = locations.last
-        let long = Double((location?.coordinate.longitude)!)
-        let lat = Double((location?.coordinate.latitude)!)
+            
+        self.long = Double((location?.coordinate.longitude)!)
+        self.lat = Double((location?.coordinate.latitude)!)
         //map zoomed in aspect
         let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
         let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location!.coordinate.latitude, location!.coordinate.longitude)
         let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
         map.setRegion(region, animated: true)
-//        userCoordinate = YLPCoordinate(latitude: newLat, longitude: newLong)
-        let currentUser = User.current
-        let dataLocation = Location(lat: lat, long: long)
-        let dict = dataLocation.dictValue
-        let locationRef = Database.database().reference().child("location").child(currentUser.uid).childByAutoId()
-        locationRef.updateChildValues(dict)
-        
         self.map.showsUserLocation = true
+        print(location!)
+        self.manager.stopUpdatingLocation()
+        self.manager.delegate = nil
+//        self.userCoordinate = YLPCoordinate(latitude: lat, longitude: long)
+//        print(userCoordinate)
+        let currentUser = User.current
+        let dataCoordinate = Location(lat: lat!, long: long!)
+        let dict = dataCoordinate.dictValue
+        let locationRef = Database.database().reference().child("location").child(currentUser.uid).childByAutoId()
+        locationRef.setValue(dict)
+}
+    
+    func getLocation(){
+        
     }
     
     
-    
     @IBAction func BarButtonTapped(_ sender: UIButton) {
-        let query = YLPQuery(coordinate: userCoordinate!)
+        let fakeCoordinate = YLPCoordinate(latitude: 23.293, longitude: -123.233)
+//        userCoordinate = YLPCoordinate(latitude: lat!, longitude: long!)
+        print(userCoordinate!)
+        let query = YLPQuery(coordinate: fakeCoordinate)
         query.term = "bar"
         query.limit = 3
         
@@ -65,33 +78,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 print("Search errored: \(error)")
                 exit(EXIT_FAILURE)
         }
-
+        
     }
     
     
     
-    @IBAction func getGeoButtontapped(_ sender: UIButton) {
-//        let geofireRef = Database.database().reference()
-//        let geoFire = GeoFire(firebaseRef: geofireRef)
-//        geoFire?.getLocationForKey("firebase-hq", withCallback: { (location, error) in
-//            if (error != nil) {
-//                print("An error occurred getting the location for \"firebase-hq\": \(error?.localizedDescription)")
-//            } else if (location != nil) {
-//                print("Location for \"firebase-hq\" is [\(location?.coordinate.latitude), \(location?.coordinate.longitude)]")
-//            } else {
-//                print("GeoFire does not contain a location for \"firebase-hq\"")
-//            }
-//        })
-//
-    }
-       override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
-        manager.distanceFilter = 1;
-        manager.startUpdatingLocation()
-        
+         manager.startUpdatingLocation()
     }
 
     override func didReceiveMemoryWarning() {

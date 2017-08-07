@@ -49,27 +49,30 @@ class LoginViewController: UIViewController {
                 }
 
                 Database.database().reference().child("users").child((user?.uid)!).setValue(["email": user?.email])
-                // Present the create profile view
-//                let initialViewController = UIStoryboard.initialViewController(for: .login)
-//                UIApplication.shared.keyWindow?.rootViewController = initialViewController
-                self.performSegue(withIdentifier: Constants.Segue.toCreateUsername, sender: self)
-//                self.dismiss(animated: true, completion: nil)
+                guard let user = user
+                    else {  return  }
 
-            
-            
+                UserService.show(forUID: user.uid) { (user) in
+                    if let user = user {
+                        // handle existing user
+                        User.setCurrent(user, writeToUserDefaults: true)
+                        
+                        let initialViewController = UIStoryboard.initialViewController(for: .main)
+                        self.view.window?.rootViewController = initialViewController
+                        self.view.window?.makeKeyAndVisible()
+                    } else {
+                        self.performSegue(withIdentifier: Constants.Segue.toCreateUsername, sender: self)
+     //                self.dismiss(animated: true, completion: nil)
+                    }
+                }
         })
     }
     }
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let loginButton = FBSDKLoginButton()
-//        loginButton.center = self.view.center
-//        self.view.addSubview(loginButton)
-//        loginButton.delegate = self
-        
-    }
+     }
     
     
     
@@ -78,10 +81,10 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
+
+
+
+
+
 }
-
-
-
-
-
-

@@ -78,10 +78,6 @@ class User: NSObject {
         return currentUser
     }
     
-//    static func setCurrent(_ user: User) {
-//        _current = user
-//    }
-    
     class func setCurrent(_ user: User, writeToUserDefaults: Bool = false) {
         if writeToUserDefaults {
             let data = NSKeyedArchiver.archivedData(withRootObject: user)

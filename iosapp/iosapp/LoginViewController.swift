@@ -47,29 +47,20 @@ class LoginViewController: UIViewController {
                     self.present(alertController, animated: true, completion: nil)
                     
                 }
-
-                Database.database().reference().child("users").child((user?.uid)!).setValue(["email": user?.email])
-                guard let user = user
+//add a completion handler to make uid create first
+                 UserService.saveToFirebase(user!, email: (user?.email!)!) { (data) in
+                guard let user = data
                     else {  return  }
+                    User.setCurrent(user, writeToUserDefaults: true)
+                    self.performSegue(withIdentifier: Constants.Segue.toCreateUsername, sender: self)
+//                    let initialViewController = UIStoryboard.initialViewController(for: .main)
+//                    self.view.window?.rootViewController = initialViewController
+//                    self.view.window?.makeKeyAndVisible()
 
-                UserService.show(forUID: user.uid) { (user) in
-                    if let user = user {
-                        // handle existing user
-                        User.setCurrent(user, writeToUserDefaults: true)
-                        
-                        let initialViewController = UIStoryboard.initialViewController(for: .main)
-                        self.view.window?.rootViewController = initialViewController
-                        self.view.window?.makeKeyAndVisible()
-                    } else {
-                        self.performSegue(withIdentifier: Constants.Segue.toCreateUsername, sender: self)
-     //                self.dismiss(animated: true, completion: nil)
-                    }
                 }
         })
     }
-    }
-        
-    
+}
     override func viewDidLoad() {
         super.viewDidLoad()
      }

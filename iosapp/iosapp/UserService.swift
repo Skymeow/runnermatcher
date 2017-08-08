@@ -12,7 +12,25 @@ import FirebaseDatabase
 import UIKit
 import FirebaseStorage
 
+
 struct UserService {
+    
+    static func saveToFirebase(_ user: FIRUser, email: String, completion: @escaping (User?) -> Void) {
+        let ref =  Database.database().reference().child("users").child((user.uid))
+        let userAttrs = ["email": email]
+        ref.setValue(userAttrs){ (error, ref) in
+            if let error = error {
+                assertionFailure(error.localizedDescription)
+                return completion(nil)
+            }
+            ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                let user = User(snapshot: snapshot)
+                completion(user)
+                
+            })
+        }
+    }
+
     static func create(for image: UIImage) {
         let ref = Database.database().reference().child("users").child("\(String(describing: Auth.auth().currentUser!.uid))")
         let imageRef = StorageReference.newProfileImageReference()

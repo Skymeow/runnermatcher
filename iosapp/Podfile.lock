@@ -91,6 +91,7 @@ DEPENDENCIES:
   - BrightFutures (~> 5.1)
   - FacebookCore
   - FacebookLogin
+  - FBSDKCoreKit
   - Firebase
   - Firebase/Auth
   - Firebase/Core
@@ -142,6 +143,6 @@ SPEC CHECKSUMS:
   Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
   YelpAPI: a0475cf4a7b6f9fe81f1bb7b8a8492770f21e3c7
 
-PODFILE CHECKSUM: 666b153763770c480cbd057104f09b277fd2e3ee
+PODFILE CHECKSUM: 9d2f1ea586411a3db74419697f75b715f92b7751
 
 COCOAPODS: 1.2.1

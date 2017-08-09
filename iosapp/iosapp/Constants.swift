@@ -16,10 +16,10 @@ struct Constants {
         static let currentUser = "currentUser"
         static let uid = "uid"
         static let email = "email"
-//        static let username = "username"
+        static let profile_pic = "profile_pic"
 //        static let age = "age"
 //        static let miles = "miles"
-//        static let imageURL = "imageURL"
+//        static let imagURL = "imagURL"
 //        static let imageHeight = "imageHeight"
     }
 }

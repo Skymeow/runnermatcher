@@ -13,10 +13,12 @@ import YelpAPI
 import BrightFutures
 //import GeoFire
 import FirebaseDatabase
-
+import Kingfisher
+import FirebaseAuth
 class ViewController: UIViewController, CLLocationManagerDelegate {
 //    temporary as bar image , change into user img after
-    @IBOutlet weak var barImage: UIImageView!
+    
+    @IBOutlet weak var runnerImage: UIImageView!
     @IBOutlet weak var map: MKMapView!
 //    get random bar within 1 mile of current location:userCoordinate
     let appId = "0NsM7ain72A2QREFFs9OjA"
@@ -46,8 +48,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let currentUser = User.current
         let dataCoordinate = Location(lat: lat!, long: long!)
         let dict = dataCoordinate.dictValue
-        let locationRef = Database.database().reference().child("location").child(currentUser.uid).childByAutoId()
-        locationRef.setValue(dict)
+        let locationRef = Database.database().reference().child("location").child(currentUser.uid)
+//        locationRef.setValue(dict)
+        locationRef.updateChildValues(dict)
 }
     
     func getLocation(){
@@ -89,6 +92,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
          manager.startUpdatingLocation()
+        let runnerUID = User.current.uid
+        let queryRef = Database.database().reference().child("users").child(runnerUID)
+        queryRef.observeSingleEvent(of: .value, with: {(snapshot) in
+            let value = snapshot.value as? [String : Any]
+            let imageString = value?["profile_pic"] as? String ?? ""
+            print(imageString)
+            let profileImage = URL(string: imageString)
+            self.runnerImage.contentMode = .scaleAspectFit
+            self.runnerImage.kf.setImage(with: profileImage)
+        })
+
+        
     }
 
     override func didReceiveMemoryWarning() {

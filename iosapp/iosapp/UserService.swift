@@ -15,9 +15,9 @@ import FirebaseStorage
 
 struct UserService {
     
-    static func saveToFirebase(_ user: FIRUser, email: String, completion: @escaping (User?) -> Void) {
+    static func saveToFirebase(_ user: FIRUser, email: String, profile_pic: String, completion: @escaping (User?) -> Void) {
         let ref =  Database.database().reference().child("users").child((user.uid))
-        let userAttrs = ["email": email]
+        let userAttrs = ["email": email, "profile_pic": profile_pic]
         ref.setValue(userAttrs){ (error, ref) in
             if let error = error {
                 assertionFailure(error.localizedDescription)
@@ -30,7 +30,7 @@ struct UserService {
             })
         }
     }
-
+    
     static func create(for image: UIImage) {
         let ref = Database.database().reference().child("users").child("\(String(describing: Auth.auth().currentUser!.uid))")
         let imageRef = StorageReference.newProfileImageReference()
@@ -61,7 +61,7 @@ struct UserService {
             })
         }
     }
-
+    
     static func show(forUID uid: String, completion: @escaping (User?) -> Void) {
         let ref = Database.database().reference().child("users").child(uid)
         //let ref = DatabaseReference.toLocation(.showUser(uid: uid))
@@ -72,7 +72,6 @@ struct UserService {
             completion(user)
         })
     }
-
+    
     
 }
-

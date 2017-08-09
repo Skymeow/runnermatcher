@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="runnerImage" translatesAutoresizingMaskIntoConstraints="NO" id="zIq-tI-FNq" customClass="runnerImage">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="runnerImage" translatesAutoresizingMaskIntoConstraints="NO" id="zIq-tI-FNq" userLabel="runner Image" customClass="runnerImage" customModule="iosapp" customModuleProvider="target">
                                 <rect key="frame" x="16" y="58" width="343" height="232"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="cgs-lw-Ndw"/>
@@ -67,14 +67,14 @@
                         <color key="backgroundColor" red="1" green="0.41568627450000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="zIq-tI-FNq" firstAttribute="leading" secondItem="mp9-HU-aCQ" secondAttribute="leading" constant="16" id="3yN-Tp-0Ny"/>
-                            <constraint firstAttribute="bottom" secondItem="zIq-tI-FNq" secondAttribute="bottom" constant="91" id="6DF-Rp-8rN"/>
+                            <constraint firstAttribute="bottom" secondItem="zIq-tI-FNq" secondAttribute="bottom" constant="377" id="6DF-Rp-8rN"/>
                             <constraint firstAttribute="trailing" secondItem="zIq-tI-FNq" secondAttribute="trailing" constant="16" id="FV9-x9-IOz"/>
-                            <constraint firstItem="zIq-tI-FNq" firstAttribute="top" secondItem="aKp-BJ-Fgy" secondAttribute="bottom" constant="73" id="Oza-Lg-Ut8"/>
+                            <constraint firstItem="zIq-tI-FNq" firstAttribute="top" secondItem="aKp-BJ-Fgy" secondAttribute="bottom" constant="38" id="Oza-Lg-Ut8"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="barImage" destination="zIq-tI-FNq" id="GHF-9o-b57"/>
                         <outlet property="map" destination="stU-8d-7GA" id="DG3-Pp-msM"/>
+                        <outlet property="runnerImage" destination="zIq-tI-FNq" id="uFj-fn-pnx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7cA-Ya-9dC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -93,10 +93,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ugf-dW-3YK">
-                                <rect key="frame" x="67" y="130" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XCs-CR-vkc">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -116,6 +112,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Logout"/>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ugf-dW-3YK">
+                                <rect key="frame" x="83" y="360" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

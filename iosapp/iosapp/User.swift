@@ -15,61 +15,62 @@ class User: NSObject {
     // MARK: - Properties
     //var isFollowed = false
     let uid: String
-//    let username: String
-//    let miles: Double
-//    let age: Int
-//    let imageHeight: CGFloat
+    let profile_pic: String
+    //    let miles: Double
+    //    let age: Int
+    //    let imageHeight: CGFloat
     let email: String
     var dictValue: [String : Any] {
         get{
-            return ["email" : email
-//            "username" : username,
-//                "miles" : miles,
-//                "age" : age,
-//                "imageHeight" : imageHeight
+            return ["email" : email,
+                    "profile_pic" : profile_pic
+                //            "username" : username,
+                //                "miles" : miles,
+                //                "age" : age,
+                //                "imageHeight" : imageHeight
             ]
         }
     }
     // MARK: - Init
     
-    init(uid: String, email: String) {
+    init(uid: String, email: String, profile_pic: String) {
         self.uid = uid
         self.email = email
-//        self.age = age
-//        self.miles = miles
-//        self.imageHeight = imageHeight
+                self.profile_pic = profile_pic
+        //        self.miles = miles
+        //        self.imageHeight = imageHeight
     }
     
     init?(snapshot: DataSnapshot) {
         guard let dict = snapshot.value as? [String : Any],
-        let email = dict["email"] as? String
-//            let username = dict["username"] as? String,
-//            let miles = dict["miles"] as? Double,
-//            let age = dict["age"] as? Int,
-//            let imageHeight = dict["imageHeight"] as? CGFloat
+            let email = dict["email"] as? String,
+                        let profile_pic = dict["profile_pic"] as? String
+            //            let miles = dict["miles"] as? Double,
+            //            let age = dict["age"] as? Int,
+            //            let imageHeight = dict["imageHeight"] as? CGFloat
             else { return nil }
         self.uid = snapshot.key
         self.email = email
-//        self.username = username
-//        self.miles = miles
-//        self.age = age
-//        self.imageHeight = imageHeight
+                self.profile_pic = profile_pic
+        //        self.miles = miles
+        //        self.age = age
+        //        self.imageHeight = imageHeight
         
     }
     
     required init?(coder aDecoder: NSCoder) {
         guard let uid = aDecoder.decodeObject(forKey: Constants.UserDefaults.uid) as? String,
-            let email = aDecoder.decodeObject(forKey: Constants.UserDefaults.email) as? String
-//            let miles = aDecoder.decodeObject(forKey: Constants.UserDefaults.miles) as? Double,
-//            let age = aDecoder.decodeObject(forKey: Constants.UserDefaults.age) as? Int,
-//            let imageHeight = aDecoder.decodeObject(forKey: Constants.UserDefaults.imageHeight) as? CGFloat
-        
+            let email = aDecoder.decodeObject(forKey: Constants.UserDefaults.email) as? String,
+            let profile_pic = aDecoder.decodeObject(forKey: Constants.UserDefaults.profile_pic) as? String
+            //            let age = aDecoder.decodeObject(forKey: Constants.UserDefaults.age) as? Int,
+            //            let imageHeight = aDecoder.decodeObject(forKey: Constants.UserDefaults.imageHeight) as? CGFloat
+            
             else { return nil }
         self.uid = uid
         self.email = email
-//        self.miles = miles
-//        self.age = age
-//        self.imageHeight = imageHeight
+        self.profile_pic = profile_pic
+        //        self.age = age
+        //        self.imageHeight = imageHeight
         super.init()
     }
     
@@ -97,9 +98,8 @@ extension User: NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(uid, forKey: Constants.UserDefaults.uid)
         aCoder.encode(email, forKey: Constants.UserDefaults.email)
-//        aCoder.encode(age, forKey: Constants.UserDefaults.age)
-//        aCoder.encode(miles, forKey: Constants.UserDefaults.miles)
-//        aCoder.encode(imageHeight, forKey: Constants.UserDefaults.imageHeight)
+                aCoder.encode(profile_pic, forKey: Constants.UserDefaults.profile_pic)
+        //        aCoder.encode(miles, forKey: Constants.UserDefaults.miles)
+        //        aCoder.encode(imageHeight, forKey: Constants.UserDefaults.imageHeight)
     }
 }
-

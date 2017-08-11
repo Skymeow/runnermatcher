@@ -1,26 +1,45 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '9.0'
-source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '10.3'
+
 use_frameworks!
-
 target 'iosapp' do
-
-  pod 'Firebase'
-  pod 'Firebase/Core'
-  pod 'Firebase/Auth'
-  pod 'FirebaseUI/Auth'
-  pod 'Firebase/Database'
-  pod 'Firebase/Storage'
-  pod 'Bolts'
-  pod 'FacebookCore'
-  pod 'FacebookLogin'
-  pod 'FirebaseUI/Facebook'
-  pod 'Kingfisher', '~> 3.0'
-  pod 'Alamofire', '~> 4.4'
-  pod 'AlamofireImage', :git => 'https://github.com/Alamofire/AlamofireImage.git'
-  pod 'AlamofireNetworkActivityIndicator', :git => 'https://github.com/Alamofire/AlamofireNetworkActivityIndicator.git'
-  pod 'OAuthSwift', '~> 1.1.0'
-  pod 'YelpAPI', '~> 2.0'
-  pod 'BrightFutures', '~> 5.1'
-  pod 'FBSDKCoreKit'
+    
+    pod 'Firebase'
+    
+    pod 'Firebase/Database'
+    
+    pod 'Firebase/Auth'
+    
+    pod 'FirebaseUI/Auth'
+    
+    pod 'Firebase/Storage'
+    
+    pod 'Bolts'
+    
+    pod 'FacebookCore'
+    
+    pod 'FacebookLogin'
+    
+    pod 'FirebaseUI/Facebook'
+    
+    pod 'Kingfisher', '~> 3.0'
+    
+    pod 'Alamofire', '~> 4.4'
+    
+    pod 'AlamofireImage', :git => 'https://github.com/Alamofire/AlamofireImage.git'
+    
+    pod 'AlamofireNetworkActivityIndicator', :git => 'https://github.com/Alamofire/AlamofireNetworkActivityIndicator.git'
+    
+    pod 'OAuthSwift', '~> 1.1.0'
+    
+    pod 'YelpAPI', '~> 2.0'
+    
+    pod 'BrightFutures', '~> 5.1'
+    
+    pod 'FBSDKCoreKit'
+    
+    #pod 'GeoFire', '>= 1.1'
+    
 end
+
+

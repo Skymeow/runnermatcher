@@ -10,10 +10,14 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    @IBAction func slider(_ sender: UISlider) {
+        milesLabel.text = String(Int(sender.value))
+    }
+    @IBOutlet weak var milesLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {

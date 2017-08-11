@@ -61,7 +61,6 @@ struct UserService {
             })
         }
     }
-    
     static func show(forUID uid: String, completion: @escaping (User?) -> Void) {
         let ref = Database.database().reference().child("users").child(uid)
         //let ref = DatabaseReference.toLocation(.showUser(uid: uid))

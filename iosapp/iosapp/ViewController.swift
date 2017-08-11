@@ -58,8 +58,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 let placemark = CLPlacemark?.last!
                 self.postalCode = placemark!.postalCode
                 
-                let zipRef = Database.database().reference().child("zipcode").child(self.postalCode!).child("userUID")
-                zipRef.setValue(currentUser.uid)
+//                let zipRef = Database.database().reference().child("zipcode").child(self.postalCode!).child("userUID")
+//                zipRef.setValue(currentUser.uid)
                 let code = String(describing: self.postalCode!)
                 
                 let first2 = code.substring(to:code.index(code.startIndex, offsetBy: 2))
@@ -69,18 +69,38 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 zipGroupRef.setValue(currentUser.uid)
                 //    create an array of uids under the same zipcode of current user
                 let checkerRef = Database.database().reference().child("zipGroup")
-                checkerRef.child(first2).observeSingleEvent(of: .value, with: {(snapshot) in
+                checkerRef.child("94").observeSingleEvent(of: .value, with: {(snapshot) in
                     let keyDict = snapshot.value as? [String: String]
                     let temp = keyDict!.keys.sorted()
                     self.keyArr = temp.filter{$0 != "\(currentUser.uid)"}
+                    self.waitForLocation()
+
                 })
-                
             }else{
                 print("no placemarks found")
             }
         })
         
         }
+    func waitForLocation(){
+        if (keyArr?.isEmpty) == nil {
+        let fakeURL = URL(string: "https://img.usmagazine.com/social/katy-perry-taylor-swift-08322c54-b352-4a33-8d81-a57a3dc1b366.jpg")
+        self.runnerImage.contentMode = .scaleAspectFit
+        self.runnerImage.kf.setImage(with: fakeURL)
+        print("Yo we done")
+        } else {
+        let randomUID = keyArr?[0]
+        let queryRef = Database.database().reference().child("users").child(randomUID!)
+        queryRef.observeSingleEvent(of: .value, with: {(snapshot) in
+        let value = snapshot.value as? [String : Any]
+        let imageString = value?["profile_pic"] as? String ?? ""
+        print(imageString)
+        let profileImage = URL(string: imageString)
+        self.runnerImage.contentMode = .scaleAspectFit
+        self.runnerImage.kf.setImage(with: profileImage)
+        })
+        }
+    }
     
     @IBAction func BarButtonTapped(_ sender: UIButton) {
         let fakeCoordinate = YLPCoordinate(latitude: 23.293, longitude: -123.233)
@@ -114,23 +134,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
          manager.startUpdatingLocation()
-    if (keyArr?.isEmpty) == nil {
-        let fakeURL = URL(string: "https://img.usmagazine.com/social/katy-perry-taylor-swift-08322c54-b352-4a33-8d81-a57a3dc1b366.jpg")
-        self.runnerImage.contentMode = .scaleAspectFit
-        self.runnerImage.kf.setImage(with: fakeURL)
-        print("Yo we done")
-    } else {
-        let randomUID = keyArr?[0]
-        let queryRef = Database.database().reference().child("users").child(randomUID!)
-        queryRef.observeSingleEvent(of: .value, with: {(snapshot) in
-            let value = snapshot.value as? [String : Any]
-            let imageString = value?["profile_pic"] as? String ?? ""
-            print(imageString)
-            let profileImage = URL(string: imageString)
-            self.runnerImage.contentMode = .scaleAspectFit
-            self.runnerImage.kf.setImage(with: profileImage)
-        })
-     }
+//         waitForLocation()
+    
     }
 
     override func didReceiveMemoryWarning() {

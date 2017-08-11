@@ -58,7 +58,7 @@
                   moduleName = "iosapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/skyxu/Desktop/make%20school%20projects/runnermatcher/iosapp/iosapp/LoginViewController.swift"
-                  timestampString = "524155104.836827"
+                  timestampString = "524158301.518279"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "61"
@@ -73,7 +73,7 @@
                   moduleName = "iosapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/skyxu/Desktop/make%20school%20projects/runnermatcher/iosapp/iosapp/LoginViewController.swift"
-                  timestampString = "524155104.839435"
+                  timestampString = "524158301.52119"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "62"
@@ -106,7 +106,7 @@
                   moduleName = "iosapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/skyxu/Desktop/make%20school%20projects/runnermatcher/iosapp/iosapp/LoginViewController.swift"
-                  timestampString = "524155104.845634"
+                  timestampString = "524158301.531019"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "28"
@@ -121,7 +121,7 @@
                   moduleName = "iosapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/skyxu/Desktop/make%20school%20projects/runnermatcher/iosapp/iosapp/LoginViewController.swift"
-                  timestampString = "524155104.848109"
+                  timestampString = "524158301.533709"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "29"
@@ -186,7 +186,7 @@
                   moduleName = "iosapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/skyxu/Desktop/make%20school%20projects/runnermatcher/iosapp/iosapp/LoginViewController.swift"
-                  timestampString = "524155104.863946"
+                  timestampString = "524158301.551339"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "47"
@@ -201,7 +201,7 @@
                   moduleName = "iosapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/skyxu/Desktop/make%20school%20projects/runnermatcher/iosapp/iosapp/LoginViewController.swift"
-                  timestampString = "524155104.866545"
+                  timestampString = "524158301.553903"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "47"
@@ -250,7 +250,7 @@
                   moduleName = "iosapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/skyxu/Desktop/make%20school%20projects/runnermatcher/iosapp/iosapp/LoginViewController.swift"
-                  timestampString = "524155104.877546"
+                  timestampString = "524158301.563617"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "73"
@@ -265,7 +265,7 @@
                   moduleName = "iosapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/skyxu/Desktop/make%20school%20projects/runnermatcher/iosapp/iosapp/LoginViewController.swift"
-                  timestampString = "524155104.880756"
+                  timestampString = "524158301.565626"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "74"
@@ -298,7 +298,7 @@
                   moduleName = "iosapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/skyxu/Desktop/make%20school%20projects/runnermatcher/iosapp/iosapp/LoginViewController.swift"
-                  timestampString = "524155104.886707"
+                  timestampString = "524158301.570714"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "73"
@@ -313,7 +313,7 @@
                   moduleName = "iosapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/skyxu/Desktop/make%20school%20projects/runnermatcher/iosapp/iosapp/LoginViewController.swift"
-                  timestampString = "524155104.889769"
+                  timestampString = "524158301.572607"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "74"
@@ -346,54 +346,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iosapp/ViewController.swift"
-            timestampString = "524152725.880647"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "iosapp.ViewController.(locationManager (__ObjC.CLLocationManager, didUpdateLocations : Swift.Array&lt;__ObjC.CLLocation&gt;) -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "iosapp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/skyxu/Desktop/make%20school%20projects/runnermatcher/iosapp/iosapp/ViewController.swift"
-                  timestampString = "524155104.901222"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "836">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "iosapp.ViewController.(locationManager (__ObjC.CLLocationManager, didUpdateLocations : Swift.Array&lt;__ObjC.CLLocation&gt;) -&gt; ()).(closure #1).(closure #1).(closure #1)"
-                  moduleName = "iosapp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/skyxu/Desktop/make%20school%20projects/runnermatcher/iosapp/iosapp/ViewController.swift"
-                  timestampString = "524155104.904015"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "27">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iosapp/ViewController.swift"
             timestampString = "524082821.259477"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -410,11 +362,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iosapp/ViewController.swift"
-            timestampString = "524152725.880647"
+            timestampString = "524158170.375366"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
             endingLineNumber = "75"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iosapp/ViewController.swift"
+            timestampString = "524157505.965095"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "7">
             <Locations>
@@ -426,11 +394,11 @@
                   moduleName = "iosapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/skyxu/Desktop/make%20school%20projects/runnermatcher/iosapp/iosapp/ViewController.swift"
-                  timestampString = "524155104.915408"
+                  timestampString = "524158301.589957"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
                   offsetFromSymbolStart = "836">
                </Location>
                <Location
@@ -441,11 +409,11 @@
                   moduleName = "iosapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/skyxu/Desktop/make%20school%20projects/runnermatcher/iosapp/iosapp/ViewController.swift"
-                  timestampString = "524155104.91818"
+                  timestampString = "524158301.59245"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
                   offsetFromSymbolStart = "27">
                </Location>
             </Locations>
@@ -458,11 +426,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iosapp/ViewController.swift"
-            timestampString = "524154332.063909"
+            timestampString = "524158300.346022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iosapp/ViewController.swift"
+            timestampString = "524156603.871969"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "7">
             <Locations>
@@ -470,30 +454,30 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "iosapp.ViewController.(locationManager (__ObjC.CLLocationManager, didUpdateLocations : Swift.Array&lt;__ObjC.CLLocation&gt;) -&gt; ()).(closure #1).(closure #1)"
+                  symbolName = "iosapp.ViewController.locationManager (__ObjC.CLLocationManager, didUpdateLocations : Swift.Array&lt;__ObjC.CLLocation&gt;) -&gt; ()"
                   moduleName = "iosapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/skyxu/Desktop/make%20school%20projects/runnermatcher/iosapp/iosapp/ViewController.swift"
-                  timestampString = "524155104.924967"
+                  timestampString = "524158301.60141"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "836">
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "3232">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "iosapp.ViewController.(locationManager (__ObjC.CLLocationManager, didUpdateLocations : Swift.Array&lt;__ObjC.CLLocation&gt;) -&gt; ()).(closure #1).(closure #1).(closure #1)"
+                  symbolName = "iosapp.ViewController.(locationManager (__ObjC.CLLocationManager, didUpdateLocations : Swift.Array&lt;__ObjC.CLLocation&gt;) -&gt; ()).(closure #1)"
                   moduleName = "iosapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/skyxu/Desktop/make%20school%20projects/runnermatcher/iosapp/iosapp/ViewController.swift"
-                  timestampString = "524155104.92808"
+                  timestampString = "524158301.603618"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
                   offsetFromSymbolStart = "27">
                </Location>
             </Locations>
@@ -506,12 +490,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iosapp/ViewController.swift"
-            timestampString = "524155103.676408"
+            timestampString = "524158300.346022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -522,12 +506,92 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iosapp/ViewController.swift"
-            timestampString = "524155002.622507"
+            timestampString = "524157648.769543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iosapp.ViewController.(locationManager (__ObjC.CLLocationManager, didUpdateLocations : Swift.Array&lt;__ObjC.CLLocation&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "iosapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/skyxu/Desktop/make%20school%20projects/runnermatcher/iosapp/iosapp/ViewController.swift"
+                  timestampString = "524158301.621438"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "3248">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iosapp.ViewController.(locationManager (__ObjC.CLLocationManager, didUpdateLocations : Swift.Array&lt;__ObjC.CLLocation&gt;) -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "iosapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/skyxu/Desktop/make%20school%20projects/runnermatcher/iosapp/iosapp/ViewController.swift"
+                  timestampString = "524158301.623566"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76"
+                  offsetFromSymbolStart = "34">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iosapp/ViewController.swift"
+            timestampString = "524158085.796568"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iosapp/ViewController.swift"
+            timestampString = "524158111.673434"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iosapp/ViewController.swift"
+            timestampString = "524158194.540107"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

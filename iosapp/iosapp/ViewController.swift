@@ -5,7 +5,7 @@
 //  Created by Sky Xu on 7/24/17.
 //  Copyright © 2017 Sky Xu. All rights reserved.
 //
-
+import Foundation
 import UIKit
 import CoreLocation
 import MapKit
@@ -14,14 +14,15 @@ import BrightFutures
 import FirebaseDatabase
 import Kingfisher
 import FirebaseAuth
+import VideoBackground
 class ViewController: UIViewController, CLLocationManagerDelegate {
+    
     @IBOutlet weak var runnerImage: UIImageView!
     @IBOutlet weak var map: MKMapView!
     var postalCode: String?
     var checker: String?
     var keyArr: [String]?
     var newkeyArr: [String]?
-//    let currentUser = User.current
     var displayedUID = ""
     //    get random bar within 1 mile of current location:userCoordinate
     let appId = "0NsM7ain72A2QREFFs9OjA"
@@ -33,7 +34,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
     func locationManager(_ manage: CLLocationManager,didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
-            
         self.long = Double((location?.coordinate.longitude)!)
         self.lat = Double((location?.coordinate.latitude)!)
         //map zoomed in aspect
@@ -59,7 +59,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             if (CLPlacemark?.count)!>0{
                 let placemark = CLPlacemark?.last!
                 self.postalCode = placemark!.postalCode
-                
 //                let zipRef = Database.database().reference().child("zipcode").child(self.postalCode!).child("userUID")
 //                zipRef.setValue(currentUser.uid)
                 let code = String(describing: self.postalCode!)
@@ -76,11 +75,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     let currentUser = User.current
                     self.keyArr = temp.filter{$0 != "\(currentUser.uid)"}
                     self.update()
-                    
                 })
-
-               
-          
             }else{
                 print("no placemarks found")
             }
@@ -189,8 +184,41 @@ func update(){
         
     }
     
+    func removeSubview(){
+        print("Start remove sibview")
+        if let viewWithTag = self.view.viewWithTag(100) {
+            viewWithTag.removeFromSuperview()
+            
+        }else{
+        print("No!")
+        }
+    }
+    
   override func viewDidLoad() {
         super.viewDidLoad()
+    let videoPath = Bundle.main.path(forResource: "run", ofType:"mp4")
+    let imagePath = Bundle.main.path(forResource: "runner", ofType: "jpg")!
+    let options = VideoOptions(pathToVideo: videoPath!, pathToImage: imagePath, isMuted: false, shouldLoop: true)
+    let videoView = VideoBackground(frame: view.frame, options: options)
+    videoView.tag = 100
+    videoView.isUserInteractionEnabled = true
+    view.addSubview(videoView)
+    
+     let aSelector : Selector = #selector(ViewController.removeSubview)
+    let tapGesture = UITapGestureRecognizer(target:self, action: aSelector)
+    videoView.addGestureRecognizer(tapGesture)
+    
+    let textLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 30))
+    textLabel.center = CGPoint(x: 160, y: 285)
+    textLabel.textAlignment = .center
+    textLabel.isUserInteractionEnabled = true
+    self.view.addSubview(textLabel)
+    textLabel.fadeIn(completion: {
+        (finished: Bool) -> Void in
+         textLabel.text = "Tap screen to get started!"
+    })
+    
+    textLabel.fadeOut()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
@@ -207,5 +235,18 @@ func update(){
     }
 
 
+}
+
+extension UIView {
+    func fadeIn(_ duration: TimeInterval = 2.0, delay: TimeInterval = 0.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in}) {
+        UIView.animate(withDuration: duration, delay: delay, options: UIViewAnimationOptions.curveEaseIn, animations: {
+            self.alpha = 1.0
+        }, completion: completion)  }
+    
+    func fadeOut(_ duration: TimeInterval = 5.0, delay: TimeInterval = 0.0, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in}) {
+        UIView.animate(withDuration: duration, delay: delay, options: UIViewAnimationOptions.curveEaseIn, animations: {
+            self.alpha = 0.0
+        }, completion: completion)
+    }
 }
 

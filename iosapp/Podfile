@@ -38,6 +38,7 @@ target 'iosapp' do
     
     pod 'FBSDKCoreKit'
     
+    pod 'VideoBackground', '~> 0.1.0'
     #pod 'GeoFire', '>= 1.1'
     
 end

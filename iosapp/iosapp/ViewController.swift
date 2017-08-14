@@ -17,6 +17,9 @@ import FirebaseAuth
 import VideoBackground
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet weak var popupView: UIView!
+    @IBOutlet weak var popupConstraint: NSLayoutConstraint!
+    @IBOutlet weak var modalImg: UIImageView!
     @IBOutlet weak var runnerImage: UIImageView!
     @IBOutlet weak var map: MKMapView!
     var postalCode: String?
@@ -84,7 +87,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
 //    end of location manager
 func update(){
-    
     if (self.keyArr?.isEmpty) == true {
             let fakeURL = URL(string: "https://img.usmagazine.com/social/katy-perry-taylor-swift-08322c54-b352-4a33-8d81-a57a3dc1b366.jpg")
             self.runnerImage.contentMode = .scaleAspectFit
@@ -130,19 +132,23 @@ func update(){
         if gestureRecognizer.state == UIGestureRecognizerState.ended {
             
             var acceptedOrRejected = ""
+            var ignored =  [""]
             let swipedRef = Database.database().reference().child("swiped").child(currentUser.uid)
             if label.center.x < 100 {
                 print("not chosen")
                 acceptedOrRejected = "rejected"
-                swipedRef.child("rejected").child(displayedUID).setValue(displayedUID)
+                swipedRef.child("rejected").updateChildValues(["\(displayedUID)" : true])
+                ignored.append("\(displayedUID)")
                 
             } else if label.center.x > self.view.bounds.width - 100 {
                 print("chosen")
                 acceptedOrRejected = "accepted"
-                swipedRef.child("accepted").child(displayedUID).setValue(displayedUID)
+                swipedRef.child("accepted").updateChildValues(["\(displayedUID)" : true])
+                ignored.append("\(displayedUID)")
             }
             if acceptedOrRejected != "" && displayedUID != ""{
-                 keyArr = keyArr?.filter{$0 != "\(displayedUID)"}
+//                 keyArr = keyArr?.filter{$0 != "\(displayedUID)"}
+                keyArr = Array(Set(keyArr!).subtracting(ignored))
                 update()
             }
 
@@ -155,13 +161,16 @@ func update(){
         }
         
     }
-    //end wasDragged function
+//end wasDragged function
 
-
+//barbuttontapped is show pop out now
     @IBAction func BarButtonTapped(_ sender: UIButton) {
+        popupConstraint.constant = 0
+        UIView.animate(withDuration: 0.2, animations: {self.view.layoutIfNeeded()
+        })
         let fakeCoordinate = YLPCoordinate(latitude: 23.293, longitude: -123.233)
 //        userCoordinate = YLPCoordinate(latitude: lat!, longitude: long!)
-        print(userCoordinate!)
+//        print(userCoordinate!)
         let query = YLPQuery(coordinate: fakeCoordinate)
         query.term = "bar"
         query.limit = 3
@@ -184,6 +193,13 @@ func update(){
         
     }
     
+    
+    @IBAction func popupClosed(_ sender: UIButton) {
+        popupConstraint.constant = -400
+        UIView.animate(withDuration: 0.1, animations: {self.view.layoutIfNeeded()
+        })
+    }
+    
     func removeSubview(){
         print("Start remove sibview")
         if let viewWithTag = self.view.viewWithTag(100) {
@@ -197,14 +213,14 @@ func update(){
   override func viewDidLoad() {
         super.viewDidLoad()
     let videoPath = Bundle.main.path(forResource: "run", ofType:"mp4")
-    let imagePath = Bundle.main.path(forResource: "runner", ofType: "jpg")!
-    let options = VideoOptions(pathToVideo: videoPath!, pathToImage: imagePath, isMuted: false, shouldLoop: true)
+    let imagePath = Bundle.main.path(forResource: "runner", ofType: "jpeg")!
+    let options = VideoOptions(pathToVideo: videoPath!, pathToImage: imagePath, isMuted: true, shouldLoop: true)
     let videoView = VideoBackground(frame: view.frame, options: options)
     videoView.tag = 100
     videoView.isUserInteractionEnabled = true
     view.addSubview(videoView)
     
-     let aSelector : Selector = #selector(ViewController.removeSubview)
+    let aSelector : Selector = #selector(ViewController.removeSubview)
     let tapGesture = UITapGestureRecognizer(target:self, action: aSelector)
     videoView.addGestureRecognizer(tapGesture)
     
@@ -219,6 +235,8 @@ func update(){
     })
     
     textLabel.fadeOut()
+
+//for location manager
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
@@ -227,6 +245,10 @@ func update(){
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.wasDragged(gestureRecognizer:)))
         runnerImage.isUserInteractionEnabled = true
         runnerImage.addGestureRecognizer(gesture)
+    
+    //for popup
+    popupView.layer.cornerRadius = 10
+    popupView.layer.masksToBounds = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -238,12 +260,12 @@ func update(){
 }
 
 extension UIView {
-    func fadeIn(_ duration: TimeInterval = 2.0, delay: TimeInterval = 0.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in}) {
+    func fadeIn(_ duration: TimeInterval = 5.0, delay: TimeInterval = 0.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in}) {
         UIView.animate(withDuration: duration, delay: delay, options: UIViewAnimationOptions.curveEaseIn, animations: {
             self.alpha = 1.0
         }, completion: completion)  }
     
-    func fadeOut(_ duration: TimeInterval = 5.0, delay: TimeInterval = 0.0, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in}) {
+    func fadeOut(_ duration: TimeInterval = 9.0, delay: TimeInterval = 1.0, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in}) {
         UIView.animate(withDuration: duration, delay: delay, options: UIViewAnimationOptions.curveEaseIn, animations: {
             self.alpha = 0.0
         }, completion: completion)

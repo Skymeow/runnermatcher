@@ -32,7 +32,8 @@
 		F9873D591F26469D0087935E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9873D581F26469D0087935E /* User.swift */; };
 		F9873D5C1F2646CB0087935E /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9873D5B1F2646CB0087935E /* UserService.swift */; };
 		F9C3F6181F41D5FC00AAB7AD /* run.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F9C3F6171F41D5FC00AAB7AD /* run.mp4 */; };
-		F9C3F61A1F41DB0A00AAB7AD /* runner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F9C3F6191F41DB0A00AAB7AD /* runner.jpg */; };
+		F9C3F61C1F41F44E00AAB7AD /* runner.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F9C3F61B1F41F44E00AAB7AD /* runner.jpeg */; };
+		F9C3F6201F421CFD00AAB7AD /* beers.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C3F61F1F421CFD00AAB7AD /* beers.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,7 +66,8 @@
 		F9873D581F26469D0087935E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F9873D5B1F2646CB0087935E /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		F9C3F6171F41D5FC00AAB7AD /* run.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = run.mp4; sourceTree = "<group>"; };
-		F9C3F6191F41DB0A00AAB7AD /* runner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = runner.jpg; sourceTree = "<group>"; };
+		F9C3F61B1F41F44E00AAB7AD /* runner.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = runner.jpeg; sourceTree = "<group>"; };
+		F9C3F61F1F421CFD00AAB7AD /* beers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beers.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +148,8 @@
 		F9873D421F2645300087935E /* iosapp */ = {
 			isa = PBXGroup;
 			children = (
-				F9C3F6191F41DB0A00AAB7AD /* runner.jpg */,
+				F9C3F61F1F421CFD00AAB7AD /* beers.png */,
+				F9C3F61B1F41F44E00AAB7AD /* runner.jpeg */,
 				F9C3F6171F41D5FC00AAB7AD /* run.mp4 */,
 				F9873D4F1F2645300087935E /* Info.plist */,
 				F92879F41F2B8116005FDBCC /* GoogleService-Info.plist */,
@@ -270,11 +273,12 @@
 			files = (
 				F9873D4E1F2645300087935E /* LaunchScreen.storyboard in Resources */,
 				F9287A031F2BA969005FDBCC /* Main.storyboard in Resources */,
+				F9C3F61C1F41F44E00AAB7AD /* runner.jpeg in Resources */,
+				F9C3F6201F421CFD00AAB7AD /* beers.png in Resources */,
 				F9C3F6181F41D5FC00AAB7AD /* run.mp4 in Resources */,
 				F9873D4B1F2645300087935E /* Assets.xcassets in Resources */,
 				F9287A081F2BAB73005FDBCC /* Login.storyboard in Resources */,
 				F92879F51F2B8116005FDBCC /* GoogleService-Info.plist in Resources */,
-				F9C3F61A1F41DB0A00AAB7AD /* runner.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

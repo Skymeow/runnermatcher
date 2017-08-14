@@ -52,10 +52,12 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="like"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXf-hJ-Lk6">
-                                <rect key="frame" x="153" y="532" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gXf-hJ-Lk6">
+                                <rect key="frame" x="112" y="497" width="128" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Bar"/>
+                                <state key="normal" backgroundImage="beers.png">
+                                    <attributedString key="attributedTitle"/>
+                                </state>
                                 <connections>
                                     <action selector="BarButtonTapped:" destination="ZFr-bR-zgD" eventType="touchUpInside" id="Cup-te-ZS9"/>
                                 </connections>
@@ -64,17 +66,55 @@
                                 <rect key="frame" x="67" y="315" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X2D-aZ-Wiq">
+                                <rect key="frame" x="-384" y="195.5" width="343" height="276"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIn-V4-pBy">
+                                        <rect key="frame" x="0.0" y="236" width="343" height="40"/>
+                                        <color key="backgroundColor" red="0.85882352939999995" green="0.85882352939999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="BBn-ua-ivO"/>
+                                        </constraints>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" red="1" green="0.2463562598" blue="0.20654921409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="popupClosed:" destination="ZFr-bR-zgD" eventType="touchUpInside" id="hYC-lO-AHX"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pND-Ll-jQO">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="276"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="pND-Ll-jQO" firstAttribute="leading" secondItem="X2D-aZ-Wiq" secondAttribute="leading" id="0qP-Bg-gri"/>
+                                    <constraint firstAttribute="trailing" secondItem="CIn-V4-pBy" secondAttribute="trailing" id="37I-KQ-H4r"/>
+                                    <constraint firstAttribute="height" constant="276" id="Hnh-70-fKV"/>
+                                    <constraint firstItem="CIn-V4-pBy" firstAttribute="leading" secondItem="X2D-aZ-Wiq" secondAttribute="leading" id="OS7-Qo-wac"/>
+                                    <constraint firstAttribute="width" constant="343" id="Tnt-0Z-4jr"/>
+                                    <constraint firstItem="pND-Ll-jQO" firstAttribute="top" secondItem="X2D-aZ-Wiq" secondAttribute="top" id="axs-GT-WHP"/>
+                                    <constraint firstAttribute="bottom" secondItem="CIn-V4-pBy" secondAttribute="bottom" id="fav-1r-1wH"/>
+                                    <constraint firstAttribute="trailing" secondItem="pND-Ll-jQO" secondAttribute="trailing" id="piq-00-OTR"/>
+                                    <constraint firstAttribute="bottom" secondItem="pND-Ll-jQO" secondAttribute="bottom" id="zWo-O5-XvQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.41568627450000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="zIq-tI-FNq" firstAttribute="leading" secondItem="mp9-HU-aCQ" secondAttribute="leading" constant="16" id="3yN-Tp-0Ny"/>
                             <constraint firstAttribute="bottom" secondItem="zIq-tI-FNq" secondAttribute="bottom" constant="377" id="6DF-Rp-8rN"/>
                             <constraint firstAttribute="trailing" secondItem="zIq-tI-FNq" secondAttribute="trailing" constant="16" id="FV9-x9-IOz"/>
+                            <constraint firstItem="X2D-aZ-Wiq" firstAttribute="centerY" secondItem="mp9-HU-aCQ" secondAttribute="centerY" id="JiW-c5-WTZ"/>
                             <constraint firstItem="zIq-tI-FNq" firstAttribute="top" secondItem="aKp-BJ-Fgy" secondAttribute="bottom" constant="38" id="Oza-Lg-Ut8"/>
+                            <constraint firstItem="X2D-aZ-Wiq" firstAttribute="centerX" secondItem="mp9-HU-aCQ" secondAttribute="centerX" constant="-400" id="kYz-bS-JJE"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="map" destination="stU-8d-7GA" id="DG3-Pp-msM"/>
+                        <outlet property="modalImg" destination="pND-Ll-jQO" id="e6L-sE-8sx"/>
+                        <outlet property="popupConstraint" destination="kYz-bS-JJE" id="a2d-RB-O87"/>
+                        <outlet property="popupView" destination="X2D-aZ-Wiq" id="Prn-j7-Fss"/>
                         <outlet property="runnerImage" destination="zIq-tI-FNq" id="uFj-fn-pnx"/>
                     </connections>
                 </viewController>
@@ -166,6 +206,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="beers.png" width="100" height="100"/>
         <image name="runnerImage" width="16" height="16"/>
     </resources>
 </document>

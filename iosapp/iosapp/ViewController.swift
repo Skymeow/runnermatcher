@@ -34,7 +34,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var long: Double?
     var lat: Double?
     var userCoordinate : YLPCoordinate?
-    
+    var matchedCoordinate : YLPCoordinate?
+    var location1 : CLLocation?
+    var location2 : CLLocation?
     func locationManager(_ manage: CLLocationManager,didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
         self.long = Double((location?.coordinate.longitude)!)
@@ -99,7 +101,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             //        pendingRef.child("pending").updateChildValues(["\(String(describing: randomUID!))" : true])
             self.displayedUID = randomUID!
             let checkRef = Database.database().reference().child("swiped").child(self.displayedUID).child("accepted")
-
+            
             checkRef.observeSingleEvent(of: .value, with: {(snapshot) in
                 if snapshot.hasChild(User.current.uid) {
                     let matcherRef = Database.database().reference().child("matchers")
@@ -162,7 +164,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 let matchingRef = Database.database().reference().child("matching")
                 matcherRef.child(displayedUID).updateChildValues(["\(User.current.uid)":true])
                 matchingRef.child(User.current.uid).updateChildValues(["\(displayedUID)":true])
-
+                
             }
             if acceptedOrRejected != "" && displayedUID != ""{
                 //                 keyArr = keyArr?.filter{$0 != "\(displayedUID)"}
@@ -183,17 +185,64 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     //barbuttontapped is show pop out now
     @IBAction func BarButtonTapped(_ sender: UIButton) {
+//        func ToRadian(x:Double){x*(Double.pi/180)
+//        }
+//        func ToDegrees(x:Double){x*(180/Double.pi)}
         popupConstraint.constant = 0
         UIView.animate(withDuration: 0.2, animations: {self.view.layoutIfNeeded()
         })
+        let matchingRef = Database.database().reference().child("matching").child(User.current.uid)
+        var matchedArr = [String]()
+        let locationRef = Database.database().reference().child("location")
+        let group = DispatchGroup()
+        group.enter()
+    DispatchQueue.main.async{
+        matchingRef.observeSingleEvent(of: .value, with: {(snapshot) in
+            let matchDict = snapshot.value as? [String: Bool]
+            for elem in matchDict! {
+                if elem.value == true{
+                    let matchedKey = elem.key
+                    matchedArr.append(matchedKey)
+                    locationRef.child(matchedArr[0]).observeSingleEvent(of: .value, with: {(snapshot) in
+                    let value = snapshot.value as? [String : Double]
+                    let lat2 = value?["lat"]
+                    let long2 = value?["long"]
+                    self.location2 = CLLocation(latitude: lat2!, longitude: long2!)
+                    let newlat2 = lat2!*(Double.pi/180)
+                    let newlat1 = self.lat!*(Double.pi/180)
+                    let dLon: CLLocationDegrees
+                    let bx: CLLocationDegrees
+                    let by: CLLocationDegrees
+                    var latitude: CLLocationDegrees
+                    var longitude: CLLocationDegrees
+                     dLon = (long2! - self.long!)*(Double.pi/180)
+                     bx = cos(newlat2) * cos(dLon)
+                     by = cos(newlat2) * sin(dLon)
+                     latitude = atan2(sin(newlat1) + sin(newlat2), sqrt((cos(newlat1) + bx) * (cos(newlat1) + bx) + by*by))
+                     longitude = self.long!*(Double.pi/180) + atan2(by, cos(newlat1) + bx)
+                    longitude = longitude*(180/Double.pi)
+                    latitude = latitude*(180/Double.pi)
+                        print(latitude)
+                    
+
+                    })
+                }
+            }
+            
+        })
+        group.leave()
+    }
+        group.notify(queue: .main) {
+        let distanceInMeters = self.location2?.distance(from: self.location1!)
+        print(distanceInMeters)
         let fakeCoordinate = YLPCoordinate(latitude: 23.293, longitude: -123.233)
-        //        userCoordinate = YLPCoordinate(latitude: lat!, longitude: long!)
-        //        print(userCoordinate!)
+        self.location1 = CLLocation(latitude: self.lat!, longitude: self.long!)
+        
         let query = YLPQuery(coordinate: fakeCoordinate)
         query.term = "bar"
         query.limit = 3
         
-        YLPClient.authorize(withAppId: appId, secret: appSecret).flatMap { client in
+        YLPClient.authorize(withAppId: self.appId, secret: self.appSecret).flatMap { client in
             client.search(withQuery: query)
             }.onSuccess { search in
                 if let topBusiness = search.businesses.first {
@@ -208,6 +257,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 print("Search errored: \(error)")
                 exit(EXIT_FAILURE)
         }
+    }
         
     }
     

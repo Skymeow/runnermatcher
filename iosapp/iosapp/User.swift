@@ -16,61 +16,54 @@ class User: NSObject {
     //var isFollowed = false
     let uid: String
     let profile_pic: String
-    //    let miles: Double
-    //    let age: Int
-    //    let imageHeight: CGFloat
+    let first_name: String
     let email: String
+    let gender: String
     var dictValue: [String : Any] {
         get{
             return ["email" : email,
-                    "profile_pic" : profile_pic
-                //            "username" : username,
-                //                "miles" : miles,
-                //                "age" : age,
-                //                "imageHeight" : imageHeight
-            ]
+                    "profile_pic" : profile_pic,
+                    "first_name" : first_name,
+                    "gender" : gender
+                    ]
         }
     }
     // MARK: - Init
     
-    init(uid: String, email: String, profile_pic: String) {
+    init(uid: String, email: String, profile_pic: String, first_name: String, gender: String) {
         self.uid = uid
         self.email = email
-                self.profile_pic = profile_pic
-        //        self.miles = miles
-        //        self.imageHeight = imageHeight
+        self.first_name = first_name
+        self.profile_pic = profile_pic
+        self.gender = gender
     }
     
     init?(snapshot: DataSnapshot) {
         guard let dict = snapshot.value as? [String : Any],
             let email = dict["email"] as? String,
-                        let profile_pic = dict["profile_pic"] as? String
-            //            let miles = dict["miles"] as? Double,
-            //            let age = dict["age"] as? Int,
-            //            let imageHeight = dict["imageHeight"] as? CGFloat
+            let profile_pic = dict["profile_pic"] as? String,
+            let first_name = dict["first_name"] as? String,
+            let gender = dict["gender"] as? String
             else { return nil }
-        self.uid = snapshot.key
-        self.email = email
-                self.profile_pic = profile_pic
-        //        self.miles = miles
-        //        self.age = age
-        //        self.imageHeight = imageHeight
-        
+            self.uid = snapshot.key
+            self.email = email
+            self.first_name = first_name
+            self.profile_pic = profile_pic
+            self.gender = gender
     }
     
     required init?(coder aDecoder: NSCoder) {
         guard let uid = aDecoder.decodeObject(forKey: Constants.UserDefaults.uid) as? String,
             let email = aDecoder.decodeObject(forKey: Constants.UserDefaults.email) as? String,
-            let profile_pic = aDecoder.decodeObject(forKey: Constants.UserDefaults.profile_pic) as? String
-            //            let age = aDecoder.decodeObject(forKey: Constants.UserDefaults.age) as? Int,
-            //            let imageHeight = aDecoder.decodeObject(forKey: Constants.UserDefaults.imageHeight) as? CGFloat
-            
+            let profile_pic = aDecoder.decodeObject(forKey: Constants.UserDefaults.profile_pic) as? String,
+            let first_name = aDecoder.decodeObject(forKey: Constants.UserDefaults.first_name) as? String,
+            let gender = aDecoder.decodeObject(forKey: Constants.UserDefaults.gender) as? String
             else { return nil }
         self.uid = uid
         self.email = email
         self.profile_pic = profile_pic
-        //        self.age = age
-        //        self.imageHeight = imageHeight
+        self.first_name = first_name
+        self.gender = gender
         super.init()
     }
     
@@ -98,8 +91,7 @@ extension User: NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(uid, forKey: Constants.UserDefaults.uid)
         aCoder.encode(email, forKey: Constants.UserDefaults.email)
-                aCoder.encode(profile_pic, forKey: Constants.UserDefaults.profile_pic)
-        //        aCoder.encode(miles, forKey: Constants.UserDefaults.miles)
-        //        aCoder.encode(imageHeight, forKey: Constants.UserDefaults.imageHeight)
+        aCoder.encode(profile_pic, forKey: Constants.UserDefaults.profile_pic)
+        aCoder.encode(first_name, forKey: Constants.UserDefaults.first_name)
     }
 }

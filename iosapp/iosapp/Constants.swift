@@ -17,9 +17,7 @@ struct Constants {
         static let uid = "uid"
         static let email = "email"
         static let profile_pic = "profile_pic"
-//        static let age = "age"
-//        static let miles = "miles"
-//        static let imagURL = "imagURL"
-//        static let imageHeight = "imageHeight"
+        static let first_name = "first_name"
+        static let gender = "gender"
     }
 }

@@ -16,11 +16,13 @@ class CreateUsernameViewController: UIViewController, UIImagePickerControllerDel
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var ageTextField: UITextField!
-    @IBOutlet weak var milesTextField: UITextField!
+//    @IBOutlet weak var milesTextField: UITextField!
     @IBOutlet weak var uploadPicture: UIButton!
     
+    @IBOutlet weak var milesLabel: UILabel!
+    @IBAction func slider(_ sender: UISlider) {
+        milesLabel.text = String(Double(sender.value))
+    }
     @IBAction func uploadPictureTapped(_ sender: UIButton) {
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -54,38 +56,15 @@ class CreateUsernameViewController: UIViewController, UIImagePickerControllerDel
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
         let firUser = Auth.auth().currentUser
-        if let username = usernameTextField.text {
-            if let miles = Double(milesTextField.text!) {
-                if let age = Int(ageTextField.text!) {
-                    //                    let currentUser = User(uid: (firUser?.uid)!)
-                    //                    let dictValue = currentUser.dictValue
+        if let miles = Double(milesLabel.text!) {
+               
+            let ref = Database.database().reference().child("users").child((firUser!.uid))
+                        ref.updateChildValues(["miles": miles])
+            UserService.create(for: self.profileImageView.image!)
+                let initialViewController = UIStoryboard.initialViewController(for: .main)
+                self.view.window?.rootViewController = initialViewController
+                self.view.window?.makeKeyAndVisible()
                     
-                    let ref = Database.database().reference().child("users").child((firUser!.uid))
-                    ref.updateChildValues(["username": username,
-                                           "miles": miles,
-                                           "age": age,
-                                           "imageHeight": 50
-                        ])
-                    
-                    //                    ref.updateChildValues(dictValue) { (error, ref) in
-                    //                        if let error = error {
-                    //                            assertionFailure(error.localizedDescription)
-                    //                            return
-                    //                        }
-                    //                    }
-                    //                        UserService.show(forUID: (firUser?.uid)!) { (user) in
-                    //                            if let user = user {
-                    //                                User.setCurrent(user, writeToUserDefaults: true)
-                    //                            }
-                    //                        }
-                    
-                    UserService.create(for: self.profileImageView.image!)
-                    let initialViewController = UIStoryboard.initialViewController(for: .main)
-                    self.view.window?.rootViewController = initialViewController
-                    self.view.window?.makeKeyAndVisible()
-                    
-                }
-            }
         }
     }
     

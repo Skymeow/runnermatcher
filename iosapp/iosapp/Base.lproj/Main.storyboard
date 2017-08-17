@@ -38,7 +38,11 @@
                                                 <segue destination="NIu-Rz-qfG" kind="show" identifier="toProfile" id="TTJ-He-ppa"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="JjE-Yr-dke"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="JjE-Yr-dke">
+                                            <connections>
+                                                <segue destination="dDh-yO-Oy0" kind="presentation" id="lcI-xw-7kn"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -120,7 +124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7cA-Ya-9dC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-186.40000000000001" y="74.212893553223395"/>
+            <point key="canvasLocation" x="-407" y="-235"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="fhO-jE-vE7">
@@ -202,7 +206,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xsi-hn-Ovs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="528.79999999999995" y="73.313343328335833"/>
+            <point key="canvasLocation" x="494" y="-112"/>
+        </scene>
+        <!--Chat-->
+        <scene sceneID="fBb-Gd-omD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Chat" id="dDh-yO-Oy0" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O2s-iM-Mb1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-460" y="697.60119940029995"/>
         </scene>
     </scenes>
     <resources>

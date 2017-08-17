@@ -192,9 +192,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let matchingRef = Database.database().reference().child("matching").child(User.current.uid)
         var matchedArr = [String]()
         let locationRef = Database.database().reference().child("location")
-//        let group = DispatchGroup()
-//        group.enter()
-//    DispatchQueue.main.async{
         matchingRef.observeSingleEvent(of: .value, with: {(snapshot) in
             let matchDict = snapshot.value as? [String: Bool]
             for elem in matchDict! {
@@ -225,7 +222,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 //                    yelpQuery
                         self.location1 = CLLocation(latitude: self.lat!, longitude: self.long!)
                         let distanceInMeters = self.location2?.distance(from: self.location1!)
-                        print(distanceInMeters)
                         let fakeCoordinate = YLPCoordinate(latitude: latitude, longitude: longitude)
                         let query = YLPQuery(coordinate: fakeCoordinate)
                         query.term = "bar"
@@ -234,9 +230,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                             client.search(withQuery: query)
                             }.onSuccess { search in
                                 if let topBusiness = search.businesses.first {
-                                    print("Top business: \(topBusiness.name)+\(topBusiness.categories.description.description)")
-                                    print(topBusiness.location.address)
-                                    //                    print(topBusiness.categories)
+                                    print("Top business: \(topBusiness.name)")
+                                    let barImg = topBusiness.imageURL
+                                    self.modalImg.contentMode = .scaleAspectFit
+                                    self.modalImg.kf.setImage(with: barImg)
                                 } else {
                                     print("No businesses found")
                                 }
@@ -250,35 +247,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
             
         })
-//        group.leave()
-//    }
-//        group.notify(queue: .main) {
-//        let distanceInMeters = self.location2?.distance(from: self.location1!)
-//        print(distanceInMeters)
-//        let fakeCoordinate = YLPCoordinate(latitude: 23.293, longitude: -123.233)
-//        self.location1 = CLLocation(latitude: self.lat!, longitude: self.long!)
-//        
-//        let query = YLPQuery(coordinate: fakeCoordinate)
-//        query.term = "bar"
-//        query.limit = 3
-//        
-//        YLPClient.authorize(withAppId: self.appId, secret: self.appSecret).flatMap { client in
-//            client.search(withQuery: query)
-//            }.onSuccess { search in
-//                if let topBusiness = search.businesses.first {
-//                    print("Top business: \(topBusiness.name)+\(topBusiness.categories.description.description)")
-//                    print(topBusiness.location.address)
-//                    //                    print(topBusiness.categories)
-//                } else {
-//                    print("No businesses found")
-//                }
-//                
-//            }.onFailure { error in
-//                print("Search errored: \(error)")
-//                exit(EXIT_FAILURE)
-//        }
-//    }
-        
     }
     
     

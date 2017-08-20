@@ -42,6 +42,7 @@
 		F9C3F62F1F449BBB00AAB7AD /* NewChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C3F62E1F449BBB00AAB7AD /* NewChatViewController.swift */; };
 		F9C3F6311F449BD400AAB7AD /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C3F6301F449BD400AAB7AD /* ChatViewController.swift */; };
 		F9C3F6341F44CF8C00AAB7AD /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9C3F6321F44CF8C00AAB7AD /* Chat.storyboard */; };
+		F9C3F6361F48C7C700AAB7AD /* DestinationChoicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C3F6351F48C7C600AAB7AD /* DestinationChoicesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		F9C3F62E1F449BBB00AAB7AD /* NewChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewChatViewController.swift; sourceTree = "<group>"; };
 		F9C3F6301F449BD400AAB7AD /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		F9C3F6331F44CF8C00AAB7AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Chat.storyboard; sourceTree = "<group>"; };
+		F9C3F6351F48C7C600AAB7AD /* DestinationChoicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationChoicesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 				F9C3F62C1F449BA300AAB7AD /* ChatListViewController.swift */,
 				F9C3F62E1F449BBB00AAB7AD /* NewChatViewController.swift */,
 				F9C3F6301F449BD400AAB7AD /* ChatViewController.swift */,
+				F9C3F6351F48C7C600AAB7AD /* DestinationChoicesViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				F9873D461F2645300087935E /* ViewController.swift in Sources */,
 				F9C3F6261F449A6F00AAB7AD /* ChatService.swift in Sources */,
 				F9C3F6311F449BD400AAB7AD /* ChatViewController.swift in Sources */,
+				F9C3F6361F48C7C700AAB7AD /* DestinationChoicesViewController.swift in Sources */,
 				F9873D441F2645300087935E /* AppDelegate.swift in Sources */,
 				F945A64B1F30FAD600D8112E /* StorageService.swift in Sources */,
 				F9C3F62B1F449B5400AAB7AD /* NewChatUserCell.swift in Sources */,

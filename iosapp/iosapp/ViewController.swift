@@ -17,6 +17,9 @@ import FirebaseAuth
 import VideoBackground
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
+//    @IBAction func destinationTapped(_ sender: Any) {
+//        performSegue(withIdentifier: "toDestination", sender: self)
+//    }
     @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var popupConstraint: NSLayoutConstraint!
     @IBOutlet weak var modalImg: UIImageView!
@@ -257,7 +260,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func removeSubview(){
-        print("Start remove sibview")
         if let viewWithTag = self.view.viewWithTag(100) {
             viewWithTag.removeFromSuperview()
             

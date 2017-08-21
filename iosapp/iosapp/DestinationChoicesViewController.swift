@@ -6,11 +6,23 @@
 //  Copyright © 2017 Sky Xu. All rights reserved.
 //
 
+import Foundation
 import UIKit
+import CoreLocation
+import YelpAPI
+import BrightFutures
+import FirebaseDatabase
+import FirebaseAuth
 
 class DestinationChoicesViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    
-//    @IBOutlet weak var label: UILabel!
+    var lat: Double!
+    var long: Double!
+    let appId = "0NsM7ain72A2QREFFs9OjA"
+    let appSecret = "F3JrqW9WU4ARGrJtzWg5FoMGdqRqIPEiq1L4MSznAsklpn2YCxDMFp1b47eVMq6E"
+    var fakeCoordinate: YLPCoordinate?
+    @IBAction func gotapped(_ sender: Any) {
+        self.YelpIcecream()
+    }
     @IBOutlet weak var pickerView: UIPickerView!
     
     let foods = ["pizza", "ice cream", "beers"]
@@ -28,7 +40,7 @@ class DestinationChoicesViewController: UIViewController, UIPickerViewDelegate, 
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
-//        label.text = foods[row]
+        //        label.text = foods[row]
         if foods[row] == "ice cream"{
             icecreamSpinning()
         } else if foods[row] == "pizza"{
@@ -38,8 +50,68 @@ class DestinationChoicesViewController: UIViewController, UIPickerViewDelegate, 
         }
     }
     
-    @IBOutlet weak var icon1: UIImageView!
+    
+    func getmid(){
+        var matchedArr = [String]()
+        let matchingRef = Database.database().reference().child("matching").child(User.current.uid)
+        
+        matchingRef.observeSingleEvent(of: .value, with: {(snapshot) in
+            let matchDict = snapshot.value as? [String: Bool]
+            for elem in matchDict! {
+                if elem.value == true{
+                    let matchedKey = elem.key
+                    matchedArr.append(matchedKey)
+                    let randomMatcher = Int(arc4random() % UInt32(matchedArr.count))
+                    let matcherItem = matchedArr[randomMatcher]
+                    
+                    let midRef = Database.database().reference().child("midpoint").child(User.current.uid).child(matcherItem)
+                    midRef.observeSingleEvent(of: .value, with:{(snapshot) in
+                        guard let value = snapshot.value as? [String : Any],
+                            let templat = value["lat"],
+                            let templong = value["long"]
+                            else {
+                                return
+                        }
+                        self.lat = templat as! Double
+                        self.long = templong as! Double
+                        self.fakeCoordinate = YLPCoordinate(latitude: self.lat, longitude: self.long)
+                    })
+                    
+                } else {
+                    print("no one likes you")
+                }
+            }
+        })
+    }
+    
+    
+    func YelpIcecream(){
 
+       let query = YLPQuery(coordinate: fakeCoordinate!)
+        query.term = "ice cream"
+        query.limit = 3
+        YLPClient.authorize(withAppId: self.appId, secret: self.appSecret).flatMap { client in
+            client.search(withQuery: query)
+            }.onSuccess { search in
+                if let topBusiness = search.businesses.first {
+                    print("Top business: \(topBusiness.name)")
+                    let url = topBusiness.url
+//                    let barImg = topBusiness.imageURL
+//                    self.modalImg.contentMode = .scaleAspectFit
+//                    
+//                    self.modalImg.kf.setImage(with: barImg)
+                } else {
+                    print("No businesses found")
+                }
+                
+            }.onFailure { error in
+                print("Search errored: \(error)")
+                exit(EXIT_FAILURE)
+        }
+    }
+    
+    @IBOutlet weak var icon1: UIImageView!
+    
     @IBOutlet weak var icon2: UIImageView!
     
     
@@ -50,8 +122,8 @@ class DestinationChoicesViewController: UIViewController, UIPickerViewDelegate, 
     @IBOutlet weak var icon5: UIImageView!
     
     @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
-    navigationController?.popToRootViewController(animated: true)
-
+        navigationController?.popToRootViewController(animated: true)
+        
     }
     
     func icecreamSpinning() {
@@ -66,7 +138,7 @@ class DestinationChoicesViewController: UIViewController, UIPickerViewDelegate, 
         icon5.image = UIImage(named:"icecream")
         icon5.startRotating()
     }
-        
+    
     func pizzaSpinning() {
         icon1.image = UIImage(named:"pizza")
         icon1.startRotating()
@@ -92,22 +164,21 @@ class DestinationChoicesViewController: UIViewController, UIPickerViewDelegate, 
         icon5.image = UIImage(named:"beer")
         icon5.startRotating()
     }
-
-
     
-   
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        label.isHidden = true
-        // Do any additional setup after loading the view.
+        self.getmid()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
 }
 
 extension UIView {
@@ -123,11 +194,11 @@ extension UIView {
             self.layer.add(animate, forKey: kAnimationKey)
         }
     }
-//    func stopRotating() {
-//        let kAnimationKey = "rotation"
-//        
-//        if self.layer.animation(forKey: kAnimationKey) != nil {
-//            self.layer.removeAnimation(forKey: kAnimationKey)
-//        }
-//    }
+    //    func stopRotating() {
+    //        let kAnimationKey = "rotation"
+    //        
+    //        if self.layer.animation(forKey: kAnimationKey) != nil {
+    //            self.layer.removeAnimation(forKey: kAnimationKey)
+    //        }
+    //    }
 }

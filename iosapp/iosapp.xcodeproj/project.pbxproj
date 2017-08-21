@@ -19,7 +19,6 @@
 		F945A6481F30FA0F00D8112E /* MGPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F945A6471F30FA0F00D8112E /* MGPhotoHelper.swift */; };
 		F945A64B1F30FAD600D8112E /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F945A64A1F30FAD600D8112E /* StorageService.swift */; };
 		F945A64D1F30FC3000D8112E /* StorageReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = F945A64C1F30FC3000D8112E /* StorageReference.swift */; };
-		F945A64F1F32127300D8112E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F945A64E1F32127300D8112E /* ProfileViewController.swift */; };
 		F945A6511F32199400D8112E /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F945A6501F32199400D8112E /* LocationService.swift */; };
 		F945A6531F3219A600D8112E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F945A6521F3219A600D8112E /* Location.swift */; };
 		F945A6551F32261600D8112E /* YelpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F945A6541F32261600D8112E /* YelpService.swift */; };
@@ -60,7 +59,6 @@
 		F945A6471F30FA0F00D8112E /* MGPhotoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPhotoHelper.swift; sourceTree = "<group>"; };
 		F945A64A1F30FAD600D8112E /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		F945A64C1F30FC3000D8112E /* StorageReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageReference.swift; sourceTree = "<group>"; };
-		F945A64E1F32127300D8112E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F945A6501F32199400D8112E /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		F945A6521F3219A600D8112E /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		F945A6541F32261600D8112E /* YelpService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpService.swift; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 				F9873D451F2645300087935E /* ViewController.swift */,
 				F92879F81F2B837D005FDBCC /* LoginViewController.swift */,
 				F9287A001F2B963B005FDBCC /* CreateUsernameViewController.swift */,
-				F945A64E1F32127300D8112E /* ProfileViewController.swift */,
 				F9C3F62C1F449BA300AAB7AD /* ChatListViewController.swift */,
 				F9C3F62E1F449BBB00AAB7AD /* NewChatViewController.swift */,
 				F9C3F6301F449BD400AAB7AD /* ChatViewController.swift */,
@@ -435,7 +432,6 @@
 				F945A64B1F30FAD600D8112E /* StorageService.swift in Sources */,
 				F9C3F62B1F449B5400AAB7AD /* NewChatUserCell.swift in Sources */,
 				F945A6531F3219A600D8112E /* Location.swift in Sources */,
-				F945A64F1F32127300D8112E /* ProfileViewController.swift in Sources */,
 				F945A64D1F30FC3000D8112E /* StorageReference.swift in Sources */,
 				F92879FE1F2B8B65005FDBCC /* Constants.swift in Sources */,
 				F945A6511F32199400D8112E /* LocationService.swift in Sources */,

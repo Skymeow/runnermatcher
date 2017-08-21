@@ -16,11 +16,22 @@ import Kingfisher
 import FirebaseAuth
 import VideoBackground
 class ViewController: UIViewController, CLLocationManagerDelegate {
+    @IBOutlet weak var profileName: UILabel!
     
-//    @IBAction func destinationTapped(_ sender: Any) {
-//        performSegue(withIdentifier: "toDestination", sender: self)
-//    }
+    @IBOutlet weak var profileMiles: UILabel!
+    @IBAction func backgroundButtonTapped(_ sender: UIButton) {
+            print("first tapped")
+        if profileName.alpha == 0.0{
+        self.profileName.alpha = 1.0
+        self.profileMiles.alpha = 1.0
+        }else {
+            self.profileName.alpha = 0.0
+            self.profileMiles.alpha = 0.0
+        }
+    }
+    @IBOutlet weak var backgroundButton: UIButton!
     @IBOutlet weak var popupView: UIView!
+    
     @IBOutlet weak var popupConstraint: NSLayoutConstraint!
     @IBOutlet weak var modalImg: UIImageView!
     @IBOutlet weak var runnerImage: UIImageView!
@@ -67,8 +78,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             if (CLPlacemark?.count)!>0{
                 let placemark = CLPlacemark?.last!
                 self.postalCode = placemark!.postalCode
-                //                let zipRef = Database.database().reference().child("zipcode").child(self.postalCode!).child("userUID")
-                //                zipRef.setValue(currentUser.uid)
                 let code = String(describing: self.postalCode!)
                 
                 let first2 = code.substring(to:code.index(code.startIndex, offsetBy: 2))
@@ -117,12 +126,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             })
             let queryRef = Database.database().reference().child("users").child(randomUID!)
             queryRef.observeSingleEvent(of: .value, with: {(snapshot) in
-                let value = snapshot.value as? [String : Any]
-                let imageString = value?["profile_pic"] as? String ?? ""
-                print(imageString)
+                guard let value = snapshot.value as? [String : Any],
+                    let firstName = value["first_name"] as? String,
+                    let miles = value["miles"] as? Double,
+                    let imageString = value["profile_pic"] as? String else {
+                        return
+                }
+                self.profileName.text = firstName
+                self.profileMiles.text = String(format: "%.2f", miles)
                 let profileImage = URL(string: imageString)
                 self.runnerImage.contentMode = .scaleAspectFit
                 self.runnerImage.kf.setImage(with: profileImage)
+                
             })
         }
         
@@ -201,7 +216,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 if elem.value == true{
                     let matchedKey = elem.key
                     matchedArr.append(matchedKey)
-                    locationRef.child(matchedArr[0]).observeSingleEvent(of: .value, with: {(snapshot) in
+                    let randomMatcher = Int(arc4random() % UInt32(matchedArr.count))
+                    let matcherItem = matchedArr[randomMatcher]
+                    locationRef.child(matcherItem).observeSingleEvent(of: .value, with: {(snapshot) in
                     let value = snapshot.value as? [String : Double]
                     let lat2 = value?["lat"]
                     let long2 = value?["long"]
@@ -224,8 +241,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     
 //                    yelpQuery
                         self.location1 = CLLocation(latitude: self.lat!, longitude: self.long!)
-                        let distanceInMeters = self.location2?.distance(from: self.location1!)
+//                        let distanceInMeters = self.location2?.distance(from: self.location1!)
+//                        updte midpoint location to firebase
                         let fakeCoordinate = YLPCoordinate(latitude: latitude, longitude: longitude)
+                        let midDict = ["lat":latitude,"long":longitude]
+                        let midpointRef = Database.database().reference().child("midpoint").child(User.current.uid).child(matcherItem)
+                            midpointRef.updateChildValues(midDict)
                         let query = YLPQuery(coordinate: fakeCoordinate)
                         query.term = "bar"
                         query.limit = 3
@@ -234,8 +255,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                             }.onSuccess { search in
                                 if let topBusiness = search.businesses.first {
                                     print("Top business: \(topBusiness.name)")
+//                                    .url is yelp on safari
                                     let barImg = topBusiness.imageURL
                                     self.modalImg.contentMode = .scaleAspectFit
+                                    
                                     self.modalImg.kf.setImage(with: barImg)
                                 } else {
                                     print("No businesses found")
@@ -303,7 +326,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.wasDragged(gestureRecognizer:)))
         runnerImage.isUserInteractionEnabled = true
         runnerImage.addGestureRecognizer(gesture)
-        
+        profileName.alpha = 0.0
+        profileMiles.alpha = 0.0
         //for popup
         popupView.layer.cornerRadius = 10
         popupView.layer.masksToBounds = true

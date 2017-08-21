@@ -13,6 +13,7 @@ import YelpAPI
 import BrightFutures
 import FirebaseDatabase
 import FirebaseAuth
+import SafariServices
 
 class DestinationChoicesViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var lat: Double!
@@ -20,8 +21,10 @@ class DestinationChoicesViewController: UIViewController, UIPickerViewDelegate, 
     let appId = "0NsM7ain72A2QREFFs9OjA"
     let appSecret = "F3JrqW9WU4ARGrJtzWg5FoMGdqRqIPEiq1L4MSznAsklpn2YCxDMFp1b47eVMq6E"
     var fakeCoordinate: YLPCoordinate?
+    var searchItem:String?
+    var resultUrl: URL?
     @IBAction func gotapped(_ sender: Any) {
-        self.YelpIcecream()
+        self.YelpSearch()
     }
     @IBOutlet weak var pickerView: UIPickerView!
     
@@ -43,10 +46,13 @@ class DestinationChoicesViewController: UIViewController, UIPickerViewDelegate, 
         //        label.text = foods[row]
         if foods[row] == "ice cream"{
             icecreamSpinning()
+            self.searchItem = "ice cream"
         } else if foods[row] == "pizza"{
             pizzaSpinning()
+            self.searchItem = "pizza"
         } else if foods[row] == "beers"{
             beerSpinning()
+            self.searchItem = "beer"
         }
     }
     
@@ -84,18 +90,19 @@ class DestinationChoicesViewController: UIViewController, UIPickerViewDelegate, 
         })
     }
     
-    
-    func YelpIcecream(){
-
+    func YelpSearch(){
        let query = YLPQuery(coordinate: fakeCoordinate!)
-        query.term = "ice cream"
+        query.term = self.searchItem!
         query.limit = 3
+        query.radiusFilter = 5000
         YLPClient.authorize(withAppId: self.appId, secret: self.appSecret).flatMap { client in
             client.search(withQuery: query)
             }.onSuccess { search in
                 if let topBusiness = search.businesses.first {
                     print("Top business: \(topBusiness.name)")
-                    let url = topBusiness.url
+                    self.resultUrl = topBusiness.url
+                    let vc = SFSafariViewController(url: self.resultUrl!, entersReaderIfAvailable: true)
+                    self.present(vc, animated: true)
 //                    let barImg = topBusiness.imageURL
 //                    self.modalImg.contentMode = .scaleAspectFit
 //                    

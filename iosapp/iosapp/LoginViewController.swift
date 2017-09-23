@@ -60,7 +60,7 @@ class LoginViewController: UIViewController {
                     self.present(alertController, animated: true, completion: nil)
                     
                 }
-                UserService.saveToFirebase(user!, email: (user?.email!)!, profile_pic: self.profile_pic!, first_name: self.userfirst_name!, gender: self.usergender!) { (data) in
+                UserService.saveToFirebase(user!, profile_pic: self.profile_pic!, first_name: self.userfirst_name!, gender: self.usergender!) { (data) in
                     guard let user = data
                         else {  return  }
                     User.setCurrent(user, writeToUserDefaults: true)

@@ -42,6 +42,9 @@
 		F9C3F6311F449BD400AAB7AD /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C3F6301F449BD400AAB7AD /* ChatViewController.swift */; };
 		F9C3F6341F44CF8C00AAB7AD /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9C3F6321F44CF8C00AAB7AD /* Chat.storyboard */; };
 		F9C3F6361F48C7C700AAB7AD /* DestinationChoicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C3F6351F48C7C600AAB7AD /* DestinationChoicesViewController.swift */; };
+		F9C737181F6856BF009F56DE /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C737171F6856BF009F56DE /* GradientView.swift */; };
+		F9E26ED31F4B735300B54401 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E26ED11F4B735300B54401 /* CustomTableViewCell.swift */; };
+		F9E26ED41F4B735300B54401 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9E26ED21F4B735300B54401 /* CustomTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +87,9 @@
 		F9C3F6301F449BD400AAB7AD /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		F9C3F6331F44CF8C00AAB7AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Chat.storyboard; sourceTree = "<group>"; };
 		F9C3F6351F48C7C600AAB7AD /* DestinationChoicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationChoicesViewController.swift; sourceTree = "<group>"; };
+		F9C737171F6856BF009F56DE /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		F9E26ED11F4B735300B54401 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		F9E26ED21F4B735300B54401 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +242,9 @@
 			children = (
 				F9C3F6281F449B3100AAB7AD /* ChatListCell.swift */,
 				F9C3F62A1F449B5400AAB7AD /* NewChatUserCell.swift */,
+				F9E26ED11F4B735300B54401 /* CustomTableViewCell.swift */,
+				F9E26ED21F4B735300B54401 /* CustomTableViewCell.xib */,
+				F9C737171F6856BF009F56DE /* GradientView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -311,6 +320,7 @@
 				F9C3F6181F41D5FC00AAB7AD /* run.mp4 in Resources */,
 				F9873D4B1F2645300087935E /* Assets.xcassets in Resources */,
 				F9287A081F2BAB73005FDBCC /* Login.storyboard in Resources */,
+				F9E26ED41F4B735300B54401 /* CustomTableViewCell.xib in Resources */,
 				F92879F51F2B8116005FDBCC /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,9 +432,11 @@
 				F9C3F6241F44833E00AAB7AD /* Message.swift in Sources */,
 				F9C3F62D1F449BA300AAB7AD /* ChatListViewController.swift in Sources */,
 				F9873D5C1F2646CB0087935E /* UserService.swift in Sources */,
+				F9E26ED31F4B735300B54401 /* CustomTableViewCell.swift in Sources */,
 				F9C3F6291F449B3100AAB7AD /* ChatListCell.swift in Sources */,
 				F9C3F62F1F449BBB00AAB7AD /* NewChatViewController.swift in Sources */,
 				F9873D461F2645300087935E /* ViewController.swift in Sources */,
+				F9C737181F6856BF009F56DE /* GradientView.swift in Sources */,
 				F9C3F6261F449A6F00AAB7AD /* ChatService.swift in Sources */,
 				F9C3F6311F449BD400AAB7AD /* ChatViewController.swift in Sources */,
 				F9C3F6361F48C7C700AAB7AD /* DestinationChoicesViewController.swift in Sources */,

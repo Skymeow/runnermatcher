@@ -15,23 +15,31 @@ import FirebaseDatabase
 import Kingfisher
 import FirebaseAuth
 import VideoBackground
+
 class ViewController: UIViewController, CLLocationManagerDelegate {
+    
+
     @IBOutlet weak var profileName: UILabel!
     
     @IBOutlet weak var profileMiles: UILabel!
-    @IBAction func backgroundButtonTapped(_ sender: UIButton) {
-            print("first tapped")
-        if profileName.alpha == 0.0{
-        self.profileName.alpha = 1.0
-        self.profileMiles.alpha = 1.0
-        }else {
-            self.profileName.alpha = 0.0
-            self.profileMiles.alpha = 0.0
-        }
-    }
-    @IBOutlet weak var backgroundButton: UIButton!
+//    @IBAction func backgroundButtonTapped(_ sender: UIButton) {
+//            print("first tapped")
+//        if profileName.alpha == 0.0{
+//        self.profileName.alpha = 1.0
+//        self.profileMiles.alpha = 1.0
+//        }else {
+//            self.profileName.alpha = 0.0
+//            self.profileMiles.alpha = 0.0
+//        }
+//    }
+
     @IBOutlet weak var popupView: UIView!
     
+    @IBOutlet weak var detailView: UIView!
+    
+    @IBOutlet weak var detailConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var detailImg: UIImageView!
     @IBOutlet weak var popupConstraint: NSLayoutConstraint!
     @IBOutlet weak var modalImg: UIImageView!
     @IBOutlet weak var runnerImage: UIImageView!
@@ -56,12 +64,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.long = Double((location?.coordinate.longitude)!)
         self.lat = Double((location?.coordinate.latitude)!)
         //map zoomed in aspect
-        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location!.coordinate.latitude, location!.coordinate.longitude)
-        let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
-        map.setRegion(region, animated: true)
-        self.map.showsUserLocation = true
-        print(location!)
+//        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+//        let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location!.coordinate.latitude, location!.coordinate.longitude)
+//        let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
+//        map.setRegion(region, animated: true)
+//        self.map.showsUserLocation = true
         self.manager.stopUpdatingLocation()
         self.manager.delegate = nil
         let currentUser = User.current
@@ -109,8 +116,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }else{
             let randomIndex = Int(arc4random_uniform(UInt32((self.keyArr?.count)!)))
             let randomUID = self.keyArr?[randomIndex]
-            //        let pendingRef = Database.database().reference().child("swiped").child(User.current.uid)
-            //        pendingRef.child("pending").updateChildValues(["\(String(describing: randomUID!))" : true])
             self.displayedUID = randomUID!
             let checkRef = Database.database().reference().child("swiped").child(self.displayedUID).child("accepted")
             
@@ -129,7 +134,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 guard let value = snapshot.value as? [String : Any],
                     let firstName = value["first_name"] as? String,
                     let miles = value["miles"] as? Double,
-                    let imageString = value["profile_pic"] as? String else {
+                    let imageString = value["profile_pic"] as? String,
+                    let detailString = value["imagURL"] as? String
+                    else {
                         return
                 }
                 self.profileName.text = firstName
@@ -137,7 +144,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 let profileImage = URL(string: imageString)
                 self.runnerImage.contentMode = .scaleAspectFit
                 self.runnerImage.kf.setImage(with: profileImage)
-                
+                let detailImage = URL(string: detailString)
+                self.detailImg.contentMode = .scaleAspectFit
+                self.detailImg.kf.setImage(with: detailImage)
+
             })
         }
         
@@ -282,9 +292,37 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         })
     }
     
+    @IBAction func backgroundDetailTapped(_ sender: Any) {
+        detailConstraint.constant = -400
+        UIView.animate(withDuration: 0.1, animations: {self.view.layoutIfNeeded()
+        })
+    }
+    
+    @IBAction func detailClicked(_ sender: Any) {
+        
+        detailConstraint.constant = 133
+        UIView.animate(withDuration: 0.2, animations: {self.view.layoutIfNeeded()
+        })
+    }
+    
+//    func resetColor(){
+//        let colorTop = UIColor(red:1.00, green:0.45, blue:0.46, alpha:1.0)
+//        let colorBottom = UIColor(red:1.00, green:0.53, blue:0.37, alpha:1.0)
+//        let gradient = CAGradientLayer()
+//        let tempcolor = [colorTop, colorBottom]
+//        let realColor = tempcolor.flatMap{$0}
+//        gradient.colors = realColor
+//        gradient.locations = [0.0 , 1.0]
+//        gradient.frame = self.view.bounds
+//        self.view.layer.insertSublayer(gradient, at: 0)
+//        
+//    }
+
+    
     func removeSubview(){
         if let viewWithTag = self.view.viewWithTag(100) {
             viewWithTag.removeFromSuperview()
+//            view.resetBag()
             
         }else{
             print("No!")
@@ -316,8 +354,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         })
         
         textLabel.fadeOut()
-        
-        //for location manager
+      
+    //for location manager
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
@@ -326,11 +364,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.wasDragged(gestureRecognizer:)))
         runnerImage.isUserInteractionEnabled = true
         runnerImage.addGestureRecognizer(gesture)
-        profileName.alpha = 0.0
-        profileMiles.alpha = 0.0
         //for popup
         popupView.layer.cornerRadius = 10
         popupView.layer.masksToBounds = true
+        detailView.layer.masksToBounds = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -342,6 +379,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 }
 
 extension UIView {
+//    func resetBag(){
+//        let colorTop = UIColor(red:1.00, green:0.45, blue:0.46, alpha:1.0)
+//        let colorBottom = UIColor(red:1.00, green:0.53, blue:0.37, alpha:1.0)
+//        let gradient = CAGradientLayer()
+//        let tempcolor = [colorTop, colorBottom]
+//        let realColor = tempcolor.flatMap{$0}
+//        gradient.colors = realColor
+//        gradient.locations = [0.0 , 1.0]
+//        gradient.frame = self.bounds
+//        self.layer.addSublayer(gradient)
+//    }
     func fadeIn(_ duration: TimeInterval = 5.0, delay: TimeInterval = 0.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in}) {
         UIView.animate(withDuration: duration, delay: delay, options: UIViewAnimationOptions.curveEaseIn, animations: {
             self.alpha = 1.0

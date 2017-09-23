@@ -103,10 +103,6 @@ class DestinationChoicesViewController: UIViewController, UIPickerViewDelegate, 
                     self.resultUrl = topBusiness.url
                     let vc = SFSafariViewController(url: self.resultUrl!, entersReaderIfAvailable: true)
                     self.present(vc, animated: true)
-//                    let barImg = topBusiness.imageURL
-//                    self.modalImg.contentMode = .scaleAspectFit
-//                    
-//                    self.modalImg.kf.setImage(with: barImg)
                 } else {
                     print("No businesses found")
                 }

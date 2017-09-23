@@ -43,7 +43,7 @@ class Message {
         self.key = snapshot.key
         self.content = content
         self.timestamp = Date(timeIntervalSince1970: timestamp)
-        self.sender = User(uid: uid, email: "", profile_pic: "", first_name: first_name, gender:"")
+        self.sender = User(uid: uid, profile_pic: "", first_name: first_name, gender:"")
     }
     
     //add another init method to create a message given content as an argument

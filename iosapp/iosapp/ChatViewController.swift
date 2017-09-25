@@ -48,20 +48,15 @@ class ChatViewController: JSQMessagesViewController {
         self.view.addSubview(cutomizedView)
         cutomizedView.backgroundColor = .blue
         cutomizedView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-//        cutomizedView.bottomAnchor.constraint(equalTo: self.collectionView.topAnchor).isActive = true
+        cutomizedView.bottomAnchor.constraint(equalTo: self.collectionView.topAnchor).isActive = true
         cutomizedView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         cutomizedView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        cutomizedView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
-        cutomizedView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 1/3).isActive = true
-        self.collectionView.topAnchor.constraint(equalTo: cutomizedView.topAnchor).isActive = true
         self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        self.collectionView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
-//        self.collectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 2/3).isActive = true
-
+        self.collectionView.heightAnchor.constraint(equalTo: cutomizedView.heightAnchor, multiplier: 2).isActive = true
         self.collectionView.backgroundColor = .green
-//        self.view.backgroundColor = .red
+        cutomizedView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     deinit {

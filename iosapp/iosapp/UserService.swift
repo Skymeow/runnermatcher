@@ -94,28 +94,43 @@ struct UserService {
             guard let matchingDict = snapshot.value as? [String : Bool] else {
                 return completion([])
             }
-            
-            // 3
-            var matching = [User]()
             let dispatchGroup = DispatchGroup()
-            
+            var matchedArr = [User]()
             for uid in matchingDict.keys {
                 dispatchGroup.enter()
                 
                 show(forUID: uid) { user in
                     if let user = user {
-                        matching.append(user)
+                        let matchedRef = Database.database().reference().child("matching").child(user.uid)
+                        print(user.uid)
+                        matchedRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                            guard let matchDict = snapshot.value as? [String: Bool] else {
+                                return completion([])
+                            }
+                        
+                            for elem in matchDict {
+                                if elem.value == true{
+                                    let matchedKey = elem.key
+//                                    show function here show the user with matchedKey as uid
+                                    show(forUID: matchedKey) { person in
+                                        if let person = person {
+                                            print(person)
+                                          matchedArr.append(person)
+                                        }
+                                    }
+                                }
+                            }
+                         })
                     }
-                    
-                    dispatchGroup.leave()
                 }
-            }
-            
-            // 4
+//                end of show uid
+                dispatchGroup.leave()
+                }
             dispatchGroup.notify(queue: .main) {
-                completion(matching)
+                completion(matchedArr)
             }
         })
     }
+   
     
 }

@@ -22,16 +22,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var profileName: UILabel!
     
     @IBOutlet weak var profileMiles: UILabel!
-//    @IBAction func backgroundButtonTapped(_ sender: UIButton) {
-//            print("first tapped")
-//        if profileName.alpha == 0.0{
-//        self.profileName.alpha = 1.0
-//        self.profileMiles.alpha = 1.0
-//        }else {
-//            self.profileName.alpha = 0.0
-//            self.profileMiles.alpha = 0.0
-//        }
-//    }
 
     @IBOutlet weak var popupView: UIView!
     
@@ -63,12 +53,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let location = locations.last
         self.long = Double((location?.coordinate.longitude)!)
         self.lat = Double((location?.coordinate.latitude)!)
-        //map zoomed in aspect
-//        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-//        let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location!.coordinate.latitude, location!.coordinate.longitude)
-//        let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
-//        map.setRegion(region, animated: true)
-//        self.map.showsUserLocation = true
         self.manager.stopUpdatingLocation()
         self.manager.delegate = nil
         let currentUser = User.current
@@ -305,24 +289,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         })
     }
     
-//    func resetColor(){
-//        let colorTop = UIColor(red:1.00, green:0.45, blue:0.46, alpha:1.0)
-//        let colorBottom = UIColor(red:1.00, green:0.53, blue:0.37, alpha:1.0)
-//        let gradient = CAGradientLayer()
-//        let tempcolor = [colorTop, colorBottom]
-//        let realColor = tempcolor.flatMap{$0}
-//        gradient.colors = realColor
-//        gradient.locations = [0.0 , 1.0]
-//        gradient.frame = self.view.bounds
-//        self.view.layer.insertSublayer(gradient, at: 0)
-//        
-//    }
-
-    
     func removeSubview(){
         if let viewWithTag = self.view.viewWithTag(100) {
             viewWithTag.removeFromSuperview()
-//            view.resetBag()
             
         }else{
             print("No!")
@@ -379,17 +348,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 }
 
 extension UIView {
-//    func resetBag(){
-//        let colorTop = UIColor(red:1.00, green:0.45, blue:0.46, alpha:1.0)
-//        let colorBottom = UIColor(red:1.00, green:0.53, blue:0.37, alpha:1.0)
-//        let gradient = CAGradientLayer()
-//        let tempcolor = [colorTop, colorBottom]
-//        let realColor = tempcolor.flatMap{$0}
-//        gradient.colors = realColor
-//        gradient.locations = [0.0 , 1.0]
-//        gradient.frame = self.bounds
-//        self.layer.addSublayer(gradient)
-//    }
+
     func fadeIn(_ duration: TimeInterval = 5.0, delay: TimeInterval = 0.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in}) {
         UIView.animate(withDuration: duration, delay: delay, options: UIViewAnimationOptions.curveEaseIn, animations: {
             self.alpha = 1.0
